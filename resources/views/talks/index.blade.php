@@ -206,6 +206,9 @@
             <p>
                 An independent archive. Not affiliated with Laravel or any Laracon organiser.
             </p>
+            <p>
+                Made with love by <a href="https://x.com/pjsantillan" rel="me noopener" target="_blank">Prince John</a>
+            </p>
         </div>
     </footer>
 </div>
