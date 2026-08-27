@@ -2573,7 +2573,7 @@
     "title": "An Introduction to Snapshot Testing",
     "speaker": "Freek Van der Herten",
     "summary": "Lightning talk. Freek Van der Herten introduces snapshot testing in PHP (phpunit-snapshot-assertions / Pest). Part of the official compilation; no chapter timestamps published.",
-    "youtube_url": "https://www.youtube.com/watch?v=K0ldExIZ0oc"
+    "youtube_url": "https://www.youtube.com/watch?v=K0ldExIZ0oc&t=2940s"
   },
   {
     "year": 2021,
@@ -2629,7 +2629,7 @@
     "title": "Inclusive Language Practices",
     "speaker": "Marje Holmstrom-Sabo",
     "summary": "Lightning talk. Marje Holmstrom-Sabo (Tighten) discusses inclusive language. Part of the official compilation; no chapter timestamps published.",
-    "youtube_url": "https://www.youtube.com/watch?v=K0ldExIZ0oc"
+    "youtube_url": "https://www.youtube.com/watch?v=K0ldExIZ0oc&t=2325s"
   },
   {
     "year": 2021,
@@ -2669,7 +2669,7 @@
     "title": "Learning in Public",
     "speaker": "Zuzana Kunckova",
     "summary": "Lightning talk. Zuzana Kunckova (Tighten; LaraBelles) talks about learning in public. Part of the official \"Lightning Talks\" compilation; YouTube has no chapter timestamps.",
-    "youtube_url": "https://www.youtube.com/watch?v=K0ldExIZ0oc"
+    "youtube_url": "https://www.youtube.com/watch?v=K0ldExIZ0oc&t=185s"
   },
   {
     "year": 2021,
@@ -2677,7 +2677,7 @@
     "title": "Level Up Your App with Composite Primary Keys",
     "speaker": "Alex Wulf",
     "summary": "Lightning talk. Alex Wulf discusses composite primary keys and unique constraints versus Eloquent's single-key model. Part of the official compilation; no chapter timestamps published.",
-    "youtube_url": "https://www.youtube.com/watch?v=K0ldExIZ0oc"
+    "youtube_url": "https://www.youtube.com/watch?v=K0ldExIZ0oc&t=3747s"
   },
   {
     "year": 2021,
@@ -2709,7 +2709,7 @@
     "title": "Tailwind Grid",
     "speaker": "Shruti Balasa",
     "summary": "Lightning talk. Shruti Balasa demonstrates common CSS Grid layouts using Tailwind CSS utilities. Part of the official compilation; no chapter timestamps published.",
-    "youtube_url": "https://www.youtube.com/watch?v=K0ldExIZ0oc"
+    "youtube_url": "https://www.youtube.com/watch?v=K0ldExIZ0oc&t=849s"
   },
   {
     "year": 2021,
@@ -4733,7 +4733,7 @@
     "title": "Against all odds: NativePHP for mobile one year later",
     "speaker": "Simon Hamp",
     "summary": "Simon Hamp updates NativePHP for mobile a year on, covering bundle-size improvements, Android support, and continued work on shipping PHP-powered native apps.",
-    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro"
+    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro&t=19603s"
   },
   {
     "year": 2026,
@@ -4741,7 +4741,7 @@
     "title": "AI won't fail loudly — It'll fail quietly",
     "speaker": "Yannick Kupferschmidt",
     "summary": "Yannick Kupferschmidt argues that AI agents fail through subtle bugs and architecture drift, and that the antidote is context engineering rather than larger context windows.",
-    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro"
+    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro&t=26798s"
   },
   {
     "year": 2026,
@@ -4749,7 +4749,7 @@
     "title": "Building applications like Puzzles",
     "speaker": "Wendell Adriel",
     "summary": "Wendell Adriel discusses composing applications from interlocking pieces rather than treating the codebase as a single block.",
-    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M"
+    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M&t=4065s"
   },
   {
     "year": 2026,
@@ -4757,7 +4757,7 @@
     "title": "Composer Deep Dive",
     "speaker": "Nils Adermann",
     "summary": "Nils Adermann, Composer's creator, gives a deep dive into Composer package management.",
-    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro"
+    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro&t=21515s"
   },
   {
     "year": 2026,
@@ -4765,7 +4765,7 @@
     "title": "Effective Code Reviews: What NOT to Do",
     "speaker": "Luke Kuzmish",
     "summary": "Luke Kuzmish argues for taking ego out of code review: standardize the process, automate linting, review your own PR first, and use Conventional Comments.",
-    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro"
+    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro&t=23273s"
   },
   {
     "year": 2026,
@@ -4773,7 +4773,7 @@
     "title": "Handling the unhappy path",
     "speaker": "Ryan Chandler",
     "summary": "Ryan Chandler highlights lesser-known Laravel features for dealing with errors and edge cases, including report() and response() on custom exceptions.",
-    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro"
+    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro&t=5098s"
   },
   {
     "year": 2026,
@@ -4781,7 +4781,7 @@
     "title": "How real-world UX helps your projects thrive",
     "speaker": "Pete Heslop",
     "summary": "Pete Heslop draws on hospitals, restaurants, and airports to argue that good UX treats users like guests, reduces friction, and plans for mistakes.",
-    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M"
+    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M&t=9920s"
   },
   {
     "year": 2026,
@@ -4789,7 +4789,7 @@
     "title": "Imports, a war story",
     "speaker": "Daniel Coulbourne",
     "summary": "Daniel Coulbourne shares the scars of migrating massive datasets and the import logic that has to survive real-world data.",
-    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M"
+    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M&t=20462s"
   },
   {
     "year": 2026,
@@ -4797,7 +4797,7 @@
     "title": "Laravel Update",
     "speaker": "Taylor Otwell",
     "summary": "Taylor Otwell's Day 1 keynote recaps Laravel 13 (PHP 8.3+, attributes, Reverb database driver, passkeys, AI SDK) and demos an AI agent fixing a Nightwatch-detected bug live.",
-    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro"
+    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro&t=28703s"
   },
   {
     "year": 2026,
@@ -4805,7 +4805,7 @@
     "title": "One billion rows with Laravel",
     "speaker": "Tobias Petry",
     "summary": "Tobias Petry covers querying and aggregating huge datasets with Laravel, including TimescaleDB/PostgreSQL aggregates for precomputing timeseries events.",
-    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro"
+    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro&t=10520s"
   },
   {
     "year": 2026,
@@ -4813,7 +4813,7 @@
     "title": "Refactoring to Parallel",
     "speaker": "Marcel Pociot",
     "summary": "Marcel Pociot covers asynchronous refactoring patterns and concurrency for Laravel workloads, including AI pipelines.",
-    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M"
+    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M&t=22269s"
   },
   {
     "year": 2026,
@@ -4821,7 +4821,7 @@
     "title": "Ship to Production on DAY 1",
     "speaker": "John Drexler",
     "summary": "John Drexler argues for solving the hardest problems first and shipping behind flags, using a Laravel Forge organizations migration and the strangler pattern as examples.",
-    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M"
+    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M&t=11255s"
   },
   {
     "year": 2026,
@@ -4829,7 +4829,7 @@
     "title": "State of the Frontend",
     "speaker": "Joe Tannenbaum",
     "summary": "Joe Tannenbaum updates Laravel's frontend tooling and previews Inertia features coming in the next major version.",
-    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M"
+    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M&t=2329s"
   },
   {
     "year": 2026,
@@ -4837,7 +4837,7 @@
     "title": "Things you didn't know you could do in CSS",
     "speaker": "Leah Thompson",
     "summary": "Leah Thompson presents CSS techniques that many backend-focused Laravel developers have not used yet.",
-    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro"
+    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro&t=8762s"
   },
   {
     "year": 2026,
@@ -4845,7 +4845,7 @@
     "title": "This shouldn't work",
     "speaker": "Shane Rosenthal",
     "summary": "Shane Rosenthal of NativePHP shows how the project now generates real native C and renders native iOS and Android UI elements.",
-    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M"
+    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M&t=7851s"
   },
   {
     "year": 2026,
@@ -4853,7 +4853,7 @@
     "title": "Unblocking your users with AI",
     "speaker": "Peter Suhm",
     "summary": "Peter Suhm of Tailwind Labs presents a practical framework for using AI at three user paralysis points—the blank state, the T-junction, and the maze—without replacing the product UI.",
-    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro"
+    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro&t=11941s"
   },
   {
     "year": 2026,
@@ -4861,7 +4861,7 @@
     "title": "Write better abstractions: lessons from an import system",
     "speaker": "Dan Harrin",
     "summary": "Dan Harrin walks through how Filament decides what to abstract, arguing for description over instruction when designing reusable systems such as an import pipeline.",
-    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro"
+    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro&t=3257s"
   },
   {
     "year": 2026,
