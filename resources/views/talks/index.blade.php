@@ -7,6 +7,18 @@
     <title>The Laracon Archive — {{ $total }} talks, 2013–2026</title>
     <meta name="description" content="Every recorded Laracon talk from 2013 to 2026: {{ $total }} talks across Laracon US, EU, Online, AU and India. Search by speaker, title, year or topic.">
 
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="The Laracon Archive — {{ $total }} talks, 2013–2026">
+    <meta property="og:description" content="Every recorded Laracon talk from 2013 to 2026: {{ $total }} talks across Laracon US, EU, Online, AU and India.">
+    <meta property="og:image" content="{{ url('/og.png') }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="The Laracon Archive — fourteen years of Laracon, kept in one record.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Laracon Archive — {{ $total }} talks, 2013–2026">
+    <meta name="twitter:description" content="Every recorded Laracon talk from 2013 to 2026 across Laracon US, EU, Online, AU and India.">
+    <meta name="twitter:image" content="{{ url('/og.png') }}">
+
     <script>
         // Set the theme before first paint so the page never flashes.
         (() => {
