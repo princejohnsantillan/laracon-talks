@@ -4829,7 +4829,7 @@
     "title": "State of the Frontend",
     "speaker": "Joe Tannenbaum",
     "summary": "Joe Tannenbaum updates Laravel's frontend tooling and previews Inertia features coming in the next major version.",
-    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M&t=2329s"
+    "youtube_url": "https://www.youtube.com/watch?v=YjuJr2fk_og"
   },
   {
     "year": 2026,
@@ -4861,7 +4861,7 @@
     "title": "Write better abstractions: lessons from an import system",
     "speaker": "Dan Harrin",
     "summary": "Dan Harrin walks through how Filament decides what to abstract, arguing for description over instruction when designing reusable systems such as an import pipeline.",
-    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro&t=3257s"
+    "youtube_url": "https://www.youtube.com/watch?v=4e_re22wOCM"
   },
   {
     "year": 2026,
