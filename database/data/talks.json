@@ -4741,7 +4741,7 @@
     "title": "AI won't fail loudly — It'll fail quietly",
     "speaker": "Yannick Kupferschmidt",
     "summary": "Yannick Kupferschmidt argues that AI agents fail through subtle bugs and architecture drift, and that the antidote is context engineering rather than larger context windows.",
-    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro&t=26798s"
+    "youtube_url": "https://www.youtube.com/watch?v=FRvYoAUUq0k"
   },
   {
     "year": 2026,
@@ -4757,7 +4757,7 @@
     "title": "Composer Deep Dive",
     "speaker": "Nils Adermann",
     "summary": "Nils Adermann, Composer's creator, gives a deep dive into Composer package management.",
-    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro&t=21515s"
+    "youtube_url": "https://www.youtube.com/watch?v=gzFL8rifuvw"
   },
   {
     "year": 2026,
@@ -4773,7 +4773,7 @@
     "title": "Handling the unhappy path",
     "speaker": "Ryan Chandler",
     "summary": "Ryan Chandler highlights lesser-known Laravel features for dealing with errors and edge cases, including report() and response() on custom exceptions.",
-    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro&t=5098s"
+    "youtube_url": "https://www.youtube.com/watch?v=V8YpTAjZj1U"
   },
   {
     "year": 2026,
