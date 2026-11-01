@@ -5,7 +5,7 @@ window.Alpine = Alpine;
 /**
  * The archive filter.
  *
- * Every one of the 626 rows is rendered by Blade, so the first paint already
+ * Every one of the 625 rows is rendered by Blade, so the first paint already
  * has the whole catalog. Alpine only hides and shows what is already there,
  * and keeps the hero ledger in step: one tick per talk, lit when it matches.
  */

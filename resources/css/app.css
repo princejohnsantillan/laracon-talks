@@ -249,7 +249,7 @@
     color: var(--ink);
 }
 
-/* Ledger — the signature. One tick mark per talk, 626 in all. -------------- */
+/* Ledger — the signature. One tick mark per talk, 625 in all. -------------- */
 .ledger {
     border-top: 1px solid var(--line);
     padding-top: 0.75rem;

@@ -1,10 +1,10 @@
 # The Laracon Archive
 
-A single-page Laravel site that holds every recorded Laracon talk from 2013 to 2026 — **626 talks**
+A single-page Laravel site that holds every recorded Laracon talk from 2013 to 2026 — **625 talks**
 across Laracon US, Laracon EU, Laracon Online, Laracon AU and Laracon India — in one searchable,
 filterable table.
 
-The whole catalog is server-rendered, so the first paint already has all 626 rows. Alpine.js filters
+The whole catalog is server-rendered, so the first paint already has all 625 rows. Alpine.js filters
 what is already on the page: instant search across year, conference, title, speaker and summary,
 conference chips, and a year filter driven by the hero ledger.
 
@@ -29,7 +29,7 @@ a static file for anyone who wants the raw catalog. Each record has:
 | `summary`     | One or two sentences on what the talk covers                |
 | `youtube_url` | `https://www.youtube.com/watch?v=…`                         |
 
-Counts by conference: Laracon EU 217, Laracon US 167, Laracon Online 109, Laracon AU 83,
+Counts by conference: Laracon EU 216, Laracon US 167, Laracon Online 109, Laracon AU 83,
 Laracon India 50.
 
 ## Running it locally
@@ -53,7 +53,7 @@ Then open http://127.0.0.1:8000.
 php artisan test
 ```
 
-The suite checks that the homepage renders all 626 rows newest-first, that both copies of the
+The suite checks that the homepage renders all 625 rows newest-first, that both copies of the
 archive are identical, and that every talk has a video URL.
 
 ## Tech stack

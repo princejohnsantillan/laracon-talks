@@ -8,13 +8,13 @@ it('renders the whole archive on the homepage', function () {
         ->assertSee('Fourteen years of Laracon', false)
         ->assertSee('id="talk-search"', false);
 
-    expect(substr_count($response->getContent(), 'data-conference='))->toBe(626);
+    expect(substr_count($response->getContent(), 'data-conference='))->toBe(625);
 });
 
 it('ships every talk in the source archive', function () {
     $talks = json_decode(file_get_contents(database_path('data/talks.json')), true);
 
-    expect($talks)->toHaveCount(626);
+    expect($talks)->toHaveCount(625);
 
     foreach ($talks as $talk) {
         expect($talk)->toHaveKeys(['year', 'conference', 'title', 'speaker', 'summary', 'youtube_url']);
@@ -33,7 +33,7 @@ it('lists the newest talks first', function () {
 
     $years = array_map('intval', $matches[1]);
 
-    expect($years)->toHaveCount(626)
+    expect($years)->toHaveCount(625)
         ->and($years[0])->toBe(2026)
         ->and($years)->toEqual(collect($years)->sortDesc()->values()->all());
 });
