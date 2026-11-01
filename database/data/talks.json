@@ -4749,7 +4749,7 @@
     "title": "Building applications like Puzzles",
     "speaker": "Wendell Adriel",
     "summary": "Wendell Adriel discusses composing applications from interlocking pieces rather than treating the codebase as a single block.",
-    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M&t=4065s"
+    "youtube_url": "https://www.youtube.com/watch?v=9DBu6Oh81Kw"
   },
   {
     "year": 2026,
@@ -4781,7 +4781,7 @@
     "title": "How real-world UX helps your projects thrive",
     "speaker": "Pete Heslop",
     "summary": "Pete Heslop draws on hospitals, restaurants, and airports to argue that good UX treats users like guests, reduces friction, and plans for mistakes.",
-    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M&t=9920s"
+    "youtube_url": "https://www.youtube.com/watch?v=FXzUg-5Mt_E"
   },
   {
     "year": 2026,
@@ -4789,7 +4789,7 @@
     "title": "Imports, a war story",
     "speaker": "Daniel Coulbourne",
     "summary": "Daniel Coulbourne shares the scars of migrating massive datasets and the import logic that has to survive real-world data.",
-    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M&t=20462s"
+    "youtube_url": "https://www.youtube.com/watch?v=dTNrsxDEj1c"
   },
   {
     "year": 2026,
@@ -4805,7 +4805,7 @@
     "title": "One billion rows with Laravel",
     "speaker": "Tobias Petry",
     "summary": "Tobias Petry covers querying and aggregating huge datasets with Laravel, including TimescaleDB/PostgreSQL aggregates for precomputing timeseries events.",
-    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro&t=10520s"
+    "youtube_url": "https://www.youtube.com/watch?v=E0Kpaqh10aU"
   },
   {
     "year": 2026,
@@ -4821,7 +4821,7 @@
     "title": "Ship to Production on DAY 1",
     "speaker": "John Drexler",
     "summary": "John Drexler argues for solving the hardest problems first and shipping behind flags, using a Laravel Forge organizations migration and the strangler pattern as examples.",
-    "youtube_url": "https://www.youtube.com/watch?v=YJmuKPk3d9M&t=11255s"
+    "youtube_url": "https://www.youtube.com/watch?v=ajXu3xp2xaA"
   },
   {
     "year": 2026,
@@ -4853,7 +4853,7 @@
     "title": "Unblocking your users with AI",
     "speaker": "Peter Suhm",
     "summary": "Peter Suhm of Tailwind Labs presents a practical framework for using AI at three user paralysis points—the blank state, the T-junction, and the maze—without replacing the product UI.",
-    "youtube_url": "https://www.youtube.com/watch?v=cucIWpAenro&t=11941s"
+    "youtube_url": "https://www.youtube.com/watch?v=RJCvgJ82pNI"
   },
   {
     "year": 2026,
