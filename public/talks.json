@@ -3586,14 +3586,6 @@
   {
     "year": 2024,
     "conference": "Laracon EU",
-    "title": "Laravel Pulse: Behind the Scenes",
-    "speaker": "Jess Archer",
-    "summary": "Jess Archer walks through how Laravel Pulse was built and what it reports about application health.",
-    "youtube_url": "https://www.youtube.com/watch?v=0WqSvhQ31MQ"
-  },
-  {
-    "year": 2024,
-    "conference": "Laracon EU",
     "title": "Laravel Update",
     "speaker": "Taylor Otwell",
     "summary": "Taylor Otwell presents upcoming features in Laravel 11, focusing on a simplified application structure with reduced boilerplate files and improved developer experience. He also announces Laravel Herd Pro with debugging features, Herd for Windows, and Laravel Reverb - a new websocket server. The talk emphasizes Laravel's continued evolution toward a more streamlined, modern framework while maintaining backward compatibility.",
