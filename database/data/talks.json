@@ -2178,8 +2178,8 @@
   {
     "year": 2020,
     "conference": "Laracon EU",
-    "title": "Nuno Maduro",
-    "speaker": "Introducing Pest",
+    "title": "Introducing Pest",
+    "speaker": "Nuno Maduro",
     "summary": "Nuno presents Pest, an elegant PHP testing framework built on top of PHPUnit. The talk demonstrates how Pest simplifies testing syntax, reduces boilerplate code, and provides a more user-friendly experience through features like higher-order tests, datasets, and improved test coverage reporting. The framework maintains compatibility with existing PHPUnit tests while offering a more modern and concise testing API.",
     "youtube_url": "https://www.youtube.com/watch?v=lEvau6CgqPE"
   },

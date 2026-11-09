@@ -717,6 +717,28 @@
     scroll-margin-top: calc(var(--controls-h, 125px) + 3.25rem);
 }
 
+.archive-table tbody .year-group {
+    padding-block: 0;
+}
+
+.year-group th {
+    padding: 1rem 0 0.75rem;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--brand);
+}
+
+.year-total {
+    margin-left: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+}
+
 .archive-table td {
     padding: 0.9375rem 1rem 0.9375rem 0;
     vertical-align: top;
@@ -861,6 +883,10 @@
 
     .archive-table thead th {
         position: static;
+    }
+
+    .year-group th {
+        display: block;
     }
 
     .archive-table tbody tr {

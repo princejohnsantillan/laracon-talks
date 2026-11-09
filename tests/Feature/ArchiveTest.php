@@ -7,6 +7,7 @@ it('renders the whole archive on the homepage', function () {
         ->assertSee('The Laracon Archive')
         ->assertSee('Fourteen years of Laracon', false)
         ->assertSee('id="talk-search"', false)
+        ->assertSee('scope="rowgroup"', false)
         ->assertSeeInOrder([
             'href="#talk-search"',
             '<main ',
@@ -35,6 +36,11 @@ it('ships every talk in the source archive', function () {
         expect($talk)->toHaveKeys(['year', 'conference', 'title', 'speaker', 'summary', 'youtube_url']);
         expect($talk['youtube_url'])->toStartWith('https://');
     }
+
+    $pest = collect($talks)->firstWhere('youtube_url', 'https://www.youtube.com/watch?v=lEvau6CgqPE');
+
+    expect($pest['title'])->toBe('Introducing Pest')
+        ->and($pest['speaker'])->toBe('Nuno Maduro');
 });
 
 it('keeps the public copy of the archive in sync', function () {

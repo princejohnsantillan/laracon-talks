@@ -67,7 +67,8 @@
                 <p class="hero-lede">
                     <span class="hero-history">Since the inaugural Laracon in Washington, DC in 2013, this community has documented
                     itself out loud — on stage and on video. </span>Here are all <strong>{{ $total }}</strong> recorded talks, from Laracon US, EU,
-                    Online, AU and India. Try a surname, Livewire, or a year — word beginnings work too.
+                    Online, AU and India. Try a surname, Livewire, or a year.
+                    Word beginnings work from 3 letters (2 for speakers).
                 </p>
 
                 <p class="hero-facts">
@@ -188,8 +189,16 @@
                     <th scope="col" class="cell-watch"><span class="sr-only">Video</span></th>
                 </tr>
             </thead>
-            <tbody role="rowgroup" @focusin="revealTalk($event)">
-                @foreach ($talks as $talk)
+            @foreach ($talks->groupBy('year') as $year => $yearTalks)
+            <tbody role="rowgroup" @focusin="revealTalk($event)"
+                :class="{ 'row-hidden': (year !== null && year !== '{{ $year }}') || !yearCounts['{{ $year }}'] }">
+                <tr class="year-group">
+                    <th scope="rowgroup" colspan="6">
+                        {{ $year }}
+                        <span class="year-total" x-text="yearCounts['{{ $year }}'] + (yearCounts['{{ $year }}'] === 1 ? ' talk' : ' talks')">{{ $yearTalks->count() }} {{ $yearTalks->count() === 1 ? 'talk' : 'talks' }}</span>
+                    </th>
+                </tr>
+                @foreach ($yearTalks as $talk)
                     <tr role="row" data-conference="{{ $talk['slug'] }}"
                         data-year="{{ $talk['year'] }}">
                         <td class="cell-year mono">{{ $talk['year'] }}</td>
@@ -212,11 +221,12 @@
                     </tr>
                 @endforeach
             </tbody>
+            @endforeach
         </table>
 
         <div class="empty" x-show="shown === 0 && settled" x-cloak>
             <h2 x-text="query !== '' ? 'No talks match “' + query + '”.' : 'No talks match these filters.'">No talks match these filters.</h2>
-            <p x-show="query !== ''">Try a speaker’s surname or a topic such as Eloquent.</p>
+            <p x-show="query !== ''">Try 3 or more letters of a topic, 2 of a speaker’s name, or a complete short word such as AI.</p>
             <p x-show="query === ''">This conference and year have no recorded talks together. Choose another year or conference.</p>
             <button type="button" @click="clear()">Reset all filters</button>
         </div>

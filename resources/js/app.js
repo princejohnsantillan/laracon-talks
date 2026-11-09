@@ -34,11 +34,12 @@ Alpine.data('archive', (total) => ({
     chipsBefore: false,
     chipsAfter: false,
     conferenceCounts: {},
+    yearCounts: {},
 
     init() {
         // The row's own text is the search index — year, conference, title,
         // speaker and summary are all already on screen.
-        this.rows = Array.from(this.$root.querySelectorAll('tbody tr')).map((el) => {
+        this.rows = Array.from(this.$root.querySelectorAll('tbody tr[data-conference]')).map((el) => {
             const words = new Set(wordsIn(el.textContent));
             const speakers = el.querySelector('.cell-speaker').textContent;
             const speakerWords = wordsIn(speakers);
@@ -208,6 +209,7 @@ Alpine.data('archive', (total) => ({
 
         this.shown = shown;
         this.conferenceCounts = perConference;
+        this.yearCounts = Object.fromEntries(perYear);
         this.settled = false;
         clearTimeout(this.feedbackTimer);
         this.feedbackTimer = setTimeout(() => {
