@@ -771,7 +771,7 @@
 }
 
 .cell-title {
-    width: 24%;
+    width: 34%;
     font-size: 0.9375rem;
     font-weight: 600;
     letter-spacing: -0.012em;
@@ -830,15 +830,51 @@
 }
 
 .talk-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
     color: inherit;
-    text-decoration: underline;
-    text-decoration-color: var(--line);
-    text-underline-offset: 3px;
+    text-decoration: none;
     scroll-margin-top: calc(var(--controls-h, 125px) + 3.25rem);
 }
 
+.talk-title {
+    min-width: 0;
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+}
+
+.talk-thumbnail {
+    position: relative;
+    flex: 0 0 96px;
+    width: 96px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--raise);
+}
+
+.talk-thumbnail::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-block: 5px solid transparent;
+    border-left: 8px solid var(--muted);
+}
+
+.talk-thumbnail img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 @media (hover: hover) {
-    .talk-link:hover {
+    .talk-link:hover .talk-title {
         text-decoration-color: var(--brand);
     }
 }
@@ -916,7 +952,11 @@
 
     .cell-title {
         font-size: 1.0625rem;
-        padding-right: 3rem;
+    }
+
+    .talk-thumbnail {
+        flex-basis: 112px;
+        width: 112px;
     }
 
     .cell-speaker {

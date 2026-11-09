@@ -27,6 +27,33 @@ it('omits placeholder descriptions without omitting their talks', function () {
         ->assertDontSee('A Laracon EU 2025 conference talk by');
 });
 
+it('uses local lazy posters and keeps unavailable and timestamped talks watchable', function () {
+    $content = $this->get('/')->assertOk()->getContent();
+    $document = new DOMDocument;
+    @$document->loadHTML($content);
+    $xpath = new DOMXPath($document);
+    $links = $xpath->query('//a[@class="talk-link"]');
+
+    expect($links->length)->toBe(626);
+
+    foreach ($xpath->query('//a[@class="talk-link"]//img') as $image) {
+        expect($image->getAttribute('src'))->toStartWith(asset('thumbnails/'))
+            ->and($image->getAttribute('loading'))->toBe('lazy')
+            ->and($image->getAttribute('alt'))->toBe('');
+    }
+
+    $shared = $xpath->query('//a[@class="talk-link" and contains(@href, "cucIWpAenro")]');
+    expect($shared->length)->toBe(4);
+    foreach ($shared as $link) {
+        expect($xpath->query('.//img', $link)->item(0)->getAttribute('src'))
+            ->toBe(asset('thumbnails/cucIWpAenro.webp'));
+    }
+
+    $unavailable = $xpath->query('//a[@class="talk-link" and contains(@href, "0WqSvhQ31MQ")]')->item(0);
+    expect(trim($unavailable->textContent))->toBe('Laravel Pulse: Behind the Scenes')
+        ->and($xpath->query('.//img', $unavailable)->length)->toBe(0);
+});
+
 it('ships every talk in the source archive', function () {
     $talks = json_decode(file_get_contents(database_path('data/talks.json')), true);
 

@@ -32,6 +32,18 @@ a static file for anyone who wants the raw catalog. Each record has:
 Counts by conference: Laracon EU 217, Laracon US 167, Laracon Online 109, Laracon AU 83,
 Laracon India 50.
 
+### Thumbnails
+
+`public/thumbnails/{YouTube video ID}.webp` contains locally served 320×180 posters, converted
+from YouTube's public `https://i.ytimg.com/vi/{video ID}/mqdefault.jpg` thumbnails to WebP at quality
+72 with metadata stripped. They are lazy-loaded at 96×54 on desktop and 112×63 in cards; visitors
+make no requests to YouTube until opening a video. Add a poster with the same naming convention
+when adding a recording. There is no runtime fetch or external thumbnail service dependency.
+
+Timestamped talks share their recording's poster, so some show repeated event artwork. Missing
+or failed images keep the reserved space and title link. The current cache covers 583 of 584
+unique recording IDs (625 of 626 talks); `0WqSvhQ31MQ` returned HTTP 404 when imported.
+
 ## Running it locally
 
 ```sh

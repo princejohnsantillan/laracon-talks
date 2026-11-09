@@ -206,7 +206,15 @@
                             <span class="conf-tag"><span class="sr-only">Laracon </span>{{ $talk['short'] }}</span>
                         </td>
                         <td class="cell-title"><a class="talk-link" href="{{ $talk['youtube_url'] }}" target="_blank" rel="noopener noreferrer"
-                            aria-label="Watch “{{ $talk['title'] }}” on YouTube (opens in a new tab)">{{ $talk['title'] }}</a></td>
+                            aria-label="Watch “{{ $talk['title'] }}” on YouTube (opens in a new tab)">
+                            <span class="talk-thumbnail" aria-hidden="true">
+                                @if ($talk['thumbnail'])
+                                    <img src="{{ $talk['thumbnail'] }}" alt="" width="320" height="180"
+                                         loading="lazy" decoding="async" x-on:error="$el.remove()">
+                                @endif
+                            </span>
+                            <span class="talk-title">{{ $talk['title'] }}</span>
+                        </a></td>
                         <td class="cell-speaker">{{ $talk['speaker'] }}</td>
                         <td class="cell-summary">{{ $talk['summary'] }}</td>
                         <td class="cell-watch">
@@ -241,6 +249,9 @@
             </p>
             <p>
                 An independent archive. Not affiliated with Laravel or any Laracon organiser.
+            </p>
+            <p>
+                Posters are served locally from public YouTube thumbnails. Talks from shared recordings may show the same event artwork.
             </p>
             <p>
                 No analytics. Your theme stays in this browser; searches appear in shareable URLs.

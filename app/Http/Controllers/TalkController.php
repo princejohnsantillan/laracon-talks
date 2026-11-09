@@ -50,16 +50,23 @@ class TalkController extends Controller
         $talks = json_decode((string) file_get_contents($path), true, 512, JSON_THROW_ON_ERROR);
 
         return collect($talks)
-            ->map(fn (array $talk): array => [
-                // Omit imported placeholders rather than inventing a description.
-                'summary' => $talk['summary'] === sprintf(
-                    'A %s %d conference talk by %s titled "%s".',
-                    $talk['conference'], $talk['year'], $talk['speaker'], $talk['title'],
-                ) ? '' : $talk['summary'],
-            ] + $talk + [
-                'short' => self::CONFERENCES[$talk['conference']] ?? $talk['conference'],
-                'slug' => Str::slug($talk['conference']),
-            ])
+            ->map(function (array $talk): array {
+                // Timestamped talks share the recording's poster, not a fabricated talk image.
+                $videoId = Str::before(Str::after($talk['youtube_url'], '?v='), '&');
+                $thumbnail = 'thumbnails/'.$videoId.'.webp';
+
+                return [
+                    // Omit imported placeholders rather than inventing a description.
+                    'summary' => $talk['summary'] === sprintf(
+                        'A %s %d conference talk by %s titled "%s".',
+                        $talk['conference'], $talk['year'], $talk['speaker'], $talk['title'],
+                    ) ? '' : $talk['summary'],
+                ] + $talk + [
+                    'short' => self::CONFERENCES[$talk['conference']] ?? $talk['conference'],
+                    'slug' => Str::slug($talk['conference']),
+                    'thumbnail' => is_file(public_path($thumbnail)) ? asset($thumbnail) : null,
+                ];
+            })
             ->sortBy([
                 ['year', 'desc'],
                 ['conference', 'asc'],
