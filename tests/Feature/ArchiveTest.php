@@ -55,6 +55,26 @@ it('uses local lazy posters and keeps unavailable and timestamped talks watchabl
         ->and($xpath->query('.//img', $unavailable)->length)->toBe(0);
 });
 
+it('links icons and share images that exist', function () {
+    $document = new DOMDocument;
+    @$document->loadHTML($this->get('/')->assertOk()->getContent());
+    $xpath = new DOMXPath($document);
+
+    $urls = fn (string $query) => collect($xpath->query($query))->map(fn (DOMAttr $attribute) => $attribute->value);
+    $icons = $urls('//link[@rel="icon" or @rel="apple-touch-icon"]/@href');
+    $images = $urls('//meta[@property="og:image" or @name="twitter:image"]/@content');
+
+    expect($icons)->toHaveCount(3)
+        ->and($images)->toHaveCount(2);
+
+    foreach ($icons->merge($images) as $url) {
+        $file = public_path(ltrim(parse_url($url, PHP_URL_PATH), '/'));
+
+        expect($file)->toBeFile()
+            ->and(filesize($file))->toBeGreaterThan(0);
+    }
+});
+
 it('ships every talk in the source archive', function () {
     $talks = json_decode(file_get_contents(database_path('data/talks.json')), true);
 

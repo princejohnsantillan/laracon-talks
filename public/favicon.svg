@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <!-- The masthead mark (.wordmark-mark) at 2x: three 2px bars, 2px apart, 13px tall. -->
+    <style>
+        .tile { fill: #fdfdfc; }
+        @media (prefers-color-scheme: dark) {
+            .tile { fill: #0c0c0d; }
+        }
+    </style>
+    <rect class="tile" width="32" height="32" rx="6"/>
+    <g fill="#ff2d20">
+        <rect x="6" y="3" width="4" height="26"/>
+        <rect x="14" y="3" width="4" height="26" opacity="0.6"/>
+        <rect x="22" y="3" width="4" height="26" opacity="0.3"/>
+    </g>
+</svg>

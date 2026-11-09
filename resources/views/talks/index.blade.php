@@ -19,6 +19,10 @@
     <meta name="twitter:description" content="Every recorded Laracon talk from 2013 to 2026 across Laracon US, EU, Online, AU and India.">
     <meta name="twitter:image" content="{{ asset('og.png') }}">
 
+    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="48x48">
+    <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+
     <script>
         // Set the theme before first paint so the page never flashes.
         (() => {
