@@ -27,6 +27,7 @@ Alpine.data('archive', (total) => ({
     settled: true,
     feedbackTimer: null,
     changedSinceSettle: false,
+    readingRows: [],
     searchHistory: false,
     rows: [],
     tickRows: [],
@@ -176,6 +177,16 @@ Alpine.data('archive', (total) => ({
         const terms = wordsIn(this.query).map(raw => ({ raw, stem: stemWord(raw) }));
         const talks = this.$root.querySelector('#talks');
         const top = talks.getBoundingClientRect().top;
+        // Remember actual reading content before a typing burst changes layout,
+        // not unrelated matches that happen to occupy the same pixels afterward.
+        if (this.settled) {
+            this.readingRows = this.rows.filter(row => {
+                if (row.el.classList.contains('row-hidden')) return false;
+                const bounds = row.el.querySelector('.talk-link').getBoundingClientRect();
+                const clearance = parseFloat(getComputedStyle(row.el).scrollMarginTop);
+                return bounds.top >= clearance && bounds.bottom <= innerHeight;
+            });
+        }
         // Intermediate short prefixes can hide every row. Avoid browser scroll
         // clamping until the typing burst settles and feedback can be revealed.
         if (top < 0) talks.style.minHeight = `${innerHeight - top}px`;
@@ -243,8 +254,9 @@ Alpine.data('archive', (total) => ({
                     // A shorter archive can clamp to its oldest rows; that is
                     // not the same as intentionally keeping a reading position.
                     const clamped = readingY > document.documentElement.scrollHeight - innerHeight + 1;
-                    // Keep the reading position when matching talks are still in view.
-                    const visible = this.rows.some(row => {
+                    // Preserve actual visible content, not an unrelated match
+                    // that has moved into the old reading position.
+                    const visible = this.readingRows.some(row => {
                         if (row.el.classList.contains('row-hidden')) return false;
                         const bounds = row.el.querySelector('.talk-link').getBoundingClientRect();
                         const clearance = parseFloat(getComputedStyle(row.el).scrollMarginTop);
