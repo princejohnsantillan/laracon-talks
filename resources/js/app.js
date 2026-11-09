@@ -1,10 +1,14 @@
 import Alpine from 'alpinejs';
-import { stemmer } from 'stemmer';
+import stemmer from 'wink-porter2-stemmer';
 
 window.Alpine = Alpine;
 
-const searchable = (value) => value.toLowerCase().normalize('NFKD')
-    .replace(/\p{Diacritic}/gu, '').replace(/ł/g, 'l').replace(/ø/g, 'o').replace(/ß/g, 'ss');
+const wordsIn = (value) => value.toLowerCase().normalize('NFKD')
+    .replace(/\p{Diacritic}/gu, '').replace(/ł/g, 'l').replace(/ø/g, 'o').replace(/ß/g, 'ss')
+    .replace(/['’]s\b/gu, '').replace(/['’]/gu, '').match(/[\p{L}\p{N}]+/gu) ?? [];
+
+// Preserve short technical terms such as iOS instead of stemming them to "io".
+const stemWord = (word) => word.length <= 3 ? word : stemmer(word);
 
 /**
  * The archive filter.
@@ -31,12 +35,11 @@ Alpine.data('archive', (total) => ({
         // The row's own text is the search index — year, conference, title,
         // speaker and summary are all already on screen.
         this.rows = Array.from(this.$root.querySelectorAll('tbody tr')).map((el) => {
-            const haystack = searchable(el.textContent).replace(/\s+/g, ' ');
-            const words = new Set(haystack.match(/[\p{L}\p{N}]+/gu));
+            const words = new Set(wordsIn(el.textContent));
             return {
                 el,
                 words,
-                stemmed: [...words].map(stemmer).join(' '),
+                stems: new Set([...words].map(stemWord)),
                 conference: el.dataset.conference,
                 year: el.dataset.year,
             };
@@ -125,7 +128,9 @@ Alpine.data('archive', (total) => ({
         this.query = '';
         this.conference = 'all';
         this.year = null;
-        this.$refs.search?.focus();
+        const target = matchMedia('(pointer: coarse)').matches
+            ? this.$root.querySelector('.controls') : this.$refs.search;
+        target.focus({ preventScroll: true });
     },
 
     /** Focus search on "/" the way a code search would. */
@@ -140,7 +145,7 @@ Alpine.data('archive', (total) => ({
     },
 
     apply(updateUrl = true) {
-        const terms = searchable(this.query).split(/\s+/).filter(Boolean).map(raw => ({ raw, stem: stemmer(raw) }));
+        const terms = wordsIn(this.query).map(raw => ({ raw, stem: stemWord(raw) }));
         const perYear = new Map();
         const perConference = { all: 0 };
         let shown = 0;
@@ -149,8 +154,10 @@ Alpine.data('archive', (total) => ({
             const matchesQuery = terms.every(({ raw, stem }) => {
                 // Short topics such as AI must not match words like "maintain".
                 if (raw.length <= 2) return row.words.has(raw);
-                // Compare English word forms symmetrically, retaining partial searches.
-                return row.stemmed.includes(stem);
+                // Whole stems prevent api → rapid and test → latest false positives.
+                // Complete longer word roots only, keeping inflections symmetric.
+                return row.stems.has(stem) || (raw.length >= 4 && stem.length >= 4 &&
+                    [...row.stems].some(word => word.startsWith(stem)));
             });
             const matchesConference = this.conference === 'all' || row.conference === this.conference;
             const matchesYear = this.year === null || row.year === this.year;

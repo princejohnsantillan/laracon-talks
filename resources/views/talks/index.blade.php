@@ -128,7 +128,7 @@
                             <path d="M10.5 10.5 14 14" stroke-linecap="round"/>
                         </svg>
                         <label for="talk-search" class="sr-only">Search the Laracon archive by year, conference, title, speaker or summary</label>
-                        <input id="talk-search" type="search" x-ref="search" x-model.debounce.200ms="query"
+                        <input id="talk-search" type="search" x-ref="search" x-model.debounce.100ms="query"
                                autocomplete="off" spellcheck="false"
                                aria-keyshortcuts="/" @keydown.escape.prevent="query = ''; $el.value = ''"
                                placeholder="Search {{ $total }} talks">

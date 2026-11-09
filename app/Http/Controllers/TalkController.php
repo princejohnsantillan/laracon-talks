@@ -50,7 +50,13 @@ class TalkController extends Controller
         $talks = json_decode((string) file_get_contents($path), true, 512, JSON_THROW_ON_ERROR);
 
         return collect($talks)
-            ->map(fn (array $talk): array => $talk + [
+            ->map(fn (array $talk): array => [
+                // Omit imported placeholders rather than inventing a description.
+                'summary' => $talk['summary'] === sprintf(
+                    'A %s %d conference talk by %s titled "%s".',
+                    $talk['conference'], $talk['year'], $talk['speaker'], $talk['title'],
+                ) ? '' : $talk['summary'],
+            ] + $talk + [
                 'short' => self::CONFERENCES[$talk['conference']] ?? $talk['conference'],
                 'slug' => Str::slug($talk['conference']),
             ])

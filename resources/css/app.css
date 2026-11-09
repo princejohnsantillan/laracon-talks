@@ -598,8 +598,13 @@
 
 .chip:disabled {
     border-style: dashed;
+    border-color: var(--faint);
     background: var(--raise);
     cursor: not-allowed;
+}
+
+.chip:disabled span:last-child {
+    text-decoration: line-through;
 }
 
 .chip[aria-pressed='true'] {
@@ -669,6 +674,11 @@
 }
 
 /* Table ------------------------------------------------------------------- */
+#talks {
+    /* Short/empty results must not clamp scroll and move the search mid-input. */
+    min-height: calc(100svh - var(--controls-h, 125px));
+}
+
 .archive-table {
     width: 100%;
     border-collapse: collapse;
@@ -876,6 +886,10 @@
     .cell-summary {
         margin-top: 0.5rem;
         max-width: 60ch;
+    }
+
+    .cell-summary:empty {
+        display: none;
     }
 
     .cell-watch {

@@ -3140,7 +3140,7 @@
     "conference": "Laracon US",
     "title": "Enjoying Laravel Data",
     "speaker": "Freek Van der Herten",
-    "summary": "In this captivating session, Freek Van der Herten takes the stage to share his expertise on effectively managing data within Laravel applications using the Spatie package Laravel-Data. (https://spatie.be/docs/laravel-data/v3/introduction) As a prominent Laravel developer, Van der Herten reveals practical tips, techniques, and best practices for handling data in a way that enhances the development experience and maximizes the application's potential.",
+    "summary": "In this captivating session, Freek Van der Herten takes the stage to share his expertise on effectively managing data within Laravel applications using the Spatie package Laravel-Data. As a prominent Laravel developer, Van der Herten reveals practical tips, techniques, and best practices for handling data in a way that enhances the development experience and maximizes the application's potential.",
     "youtube_url": "https://www.youtube.com/watch?v=CrO_7Df1cBc"
   },
   {
@@ -3492,7 +3492,7 @@
     "conference": "Laracon US",
     "title": "Laravel and AI",
     "speaker": "Colin DeCarlo",
-    "summary": "Colin shows us how to unlock vector embeddings, prompting, and more! Colin's hands-on AI-Driven Laravel course - Sign up for course updates https://aidrivenlaravel.com",
+    "summary": "Colin shows us how to unlock vector embeddings, prompting, and more!",
     "youtube_url": "https://www.youtube.com/watch?v=Rd3RTTF8xYI"
   },
   {
@@ -3508,7 +3508,7 @@
     "conference": "Laracon US",
     "title": "Learn to Fly with Laravel Reverb",
     "speaker": "Joe Dixon",
-    "summary": "Joe takes us on a journey through real-time communication with Laravel Reverb, starting with the basics, exploring how Reverb works under the hood, and culminating in an ambitious live demo that takes real-time communication to the next level. Laravel Reverb Site: https://reverb.laravel.com/ Reverb Docs: https://laravel.com/docs/11.x/reverb",
+    "summary": "Joe takes us on a journey through real-time communication with Laravel Reverb, starting with the basics, exploring how Reverb works under the hood, and culminating in an ambitious live demo that takes real-time communication to the next level.",
     "youtube_url": "https://www.youtube.com/watch?v=60g-Z-dAWNk"
   },
   {
@@ -3540,7 +3540,7 @@
     "conference": "Laracon US",
     "title": "Terminal UIs",
     "speaker": "Joe Tannenbaum",
-    "summary": "Joe demonstrates building a text based user interface in the terminal using Laravel Prompts (https://laravel.com/docs/11.x/prompts ), resulting in an interactive speaker directory app in under 30 minutes.",
+    "summary": "Joe demonstrates building a text based user interface in the terminal using Laravel Prompts, resulting in an interactive speaker directory app in under 30 minutes.",
     "youtube_url": "https://www.youtube.com/watch?v=aJu48qlJANM"
   },
   {
@@ -3556,7 +3556,7 @@
     "conference": "Laracon US",
     "title": "Verbs for Laravel",
     "speaker": "Daniel Coulbourne",
-    "summary": "Try Verbs: https://verbs.thunk.dev Daniel is founder of Thunk: https://thunk.dev Twitter: https://twitter.com/dcoulbourne Mastodon: https://rtsn.dev/@coulb",
+    "summary": "",
     "youtube_url": "https://www.youtube.com/watch?v=tX6nBpSvh4s"
   },
   {
@@ -4004,7 +4004,7 @@
     "conference": "Laracon US",
     "title": "Advanced Eloquent Relations",
     "speaker": "Chris Morrell",
-    "summary": "Chris Morrell explains how Eloquent relations in Laravel are just PHP code that can be customized to create unconventional database relationships, including geospatial queries and AI-generated data. Chris Morrell on Bluesky: https://bsky.app/profile/cmorrell.com We featured Chris in one of our \"Artisan of the Day\" posts: https://blog.laravel.com/under-laravel-eloquents-hood-the-artisan-of-the-day-is-chris-morrell",
+    "summary": "Chris Morrell explains how Eloquent relations in Laravel are just PHP code that can be customized to create unconventional database relationships, including geospatial queries and AI-generated data.",
     "youtube_url": "https://www.youtube.com/watch?v=qLC04_BPQTY"
   },
   {
@@ -4020,7 +4020,7 @@
     "conference": "Laracon US",
     "title": "Benchmarks, Bots, and Best Practices",
     "speaker": "Colin DeCarlo",
-    "summary": "Colin explains how AI models are evaluated, warns against vibe‑coding hype, and shares practical workflows that will help developers use AI as a safe and productive coding partner. Colin DeCarlo is on X: https://x.com/colindecarlo",
+    "summary": "Colin explains how AI models are evaluated, warns against vibe‑coding hype, and shares practical workflows that will help developers use AI as a safe and productive coding partner.",
     "youtube_url": "https://www.youtube.com/watch?v=Xz4QOv5Xe_s"
   },
   {
@@ -4028,7 +4028,7 @@
     "conference": "Laracon US",
     "title": "Building High-Trust Environments",
     "speaker": "John Drexler",
-    "summary": "John Drexler explains how to build a high-trust work environment by establishing shared goals, focusing on mutual problem solving, and practicing effective communication techniques. John Drexler on X: https://x.com/johnrudolphdrex We featured John in one of our \"Artisan of the Day\" posts: https://blog.laravel.com/building-high-trust-the-artisan-of-the-day-is-john-drexler",
+    "summary": "John Drexler explains how to build a high-trust work environment by establishing shared goals, focusing on mutual problem solving, and practicing effective communication techniques.",
     "youtube_url": "https://www.youtube.com/watch?v=Zki4d6sHhy4"
   },
   {
@@ -4044,7 +4044,7 @@
     "conference": "Laracon US",
     "title": "Design That Sticks",
     "speaker": "Leah Thompson",
-    "summary": "Lea Thompson shares a simple formula for turning stripped-back layouts into memorable front-end interfaces and describes her jump from newcomer to shipping complex Laravel marketing sites. Leah Thompson is on X: https://x.com/leahtcodes",
+    "summary": "Lea Thompson shares a simple formula for turning stripped-back layouts into memorable front-end interfaces and describes her jump from newcomer to shipping complex Laravel marketing sites.",
     "youtube_url": "https://www.youtube.com/watch?v=YY5zqSGpkDA"
   },
   {
@@ -4052,7 +4052,7 @@
     "conference": "Laracon US",
     "title": "From Next.js to Laravel",
     "speaker": "Dave Kiss",
-    "summary": "Dave demos a playful 3-second video guestbook - meet Lenny the larva - showing how it records with the MediaRecorder API, uploads and transcodes with Mux, and migrates from Next.js to Laravel using Inertia, server-sent events, and starter kits. Dave Kiss is on X: https://x.com/davekiss",
+    "summary": "Dave demos a playful 3-second video guestbook - meet Lenny the larva - showing how it records with the MediaRecorder API, uploads and transcodes with Mux, and migrates from Next.js to Laravel using Inertia, server-sent events, and starter kits.",
     "youtube_url": "https://www.youtube.com/watch?v=7jlrzQl4LW0"
   },
   {
@@ -4060,7 +4060,7 @@
     "conference": "Laracon US",
     "title": "From Vision to Velocity",
     "speaker": "Tom Crary",
-    "summary": "Tom describes the vision for Laravel Cloud, Forge, and Nightwatch, and outlines early hiring, product choices, and rapid scaling that led to Laravel's success. Tom is on X: https://x.com/tmoney1371",
+    "summary": "Tom describes the vision for Laravel Cloud, Forge, and Nightwatch, and outlines early hiring, product choices, and rapid scaling that led to Laravel's success.",
     "youtube_url": "https://www.youtube.com/watch?v=IkeGWHvFais"
   },
   {
@@ -4076,7 +4076,7 @@
     "conference": "Laracon US",
     "title": "Livewire 4 Revealed",
     "speaker": "Caleb Porzio",
-    "summary": "Caleb Porzio unveils Livewire 4 with unified single-file components, the revolutionary Blaze compiler that speeds up blade rendering by 10x, and Islands architecture for isolating expensive operations. Caleb Porzio is on X: https://x.com/calebporzio",
+    "summary": "Caleb Porzio unveils Livewire 4 with unified single-file components, the revolutionary Blaze compiler that speeds up blade rendering by 10x, and Islands architecture for isolating expensive operations.",
     "youtube_url": "https://www.youtube.com/watch?v=M60-nxlrePc"
   },
   {
@@ -4084,7 +4084,7 @@
     "conference": "Laracon US",
     "title": "Master Git Interactive Rebase",
     "speaker": "Rissa Jackson",
-    "summary": "Rissa Jackson demonstrates the power of Git interactive rebase with live terminal demos, showing how to drop unwanted commits, squash multiple commits together, edit commit messages, and maintain clean Git history. Rissa is on X: https://x.com/rissa_bubbles",
+    "summary": "Rissa Jackson demonstrates the power of Git interactive rebase with live terminal demos, showing how to drop unwanted commits, squash multiple commits together, edit commit messages, and maintain clean Git history.",
     "youtube_url": "https://www.youtube.com/watch?v=i6DsrMGdZW0"
   },
   {
@@ -4092,7 +4092,7 @@
     "conference": "Laracon US",
     "title": "Pest 4: Modern Browser Testing, Sharding, Visual Diffs & more",
     "speaker": "Nuno Maduro",
-    "summary": "Join Nuno Maduro, renowned PHP developer and Laravel core team member, as he introduces Pest 4, a groundbreaking update to the popular PHP testing framework. Nuno on X: https://x.com/enunomaduro 00:00 Introduction 00:52 Pest PHP 02:16 Browser Testing 02:51 Live Coding: Browser Testing Demo 06:41 Advanced Browser Testing Features 10:07 Debugging and Code Coverage 12:56 Smoke Testing Enhancements 18:21 Visual Testing Capabilities 23:07 Pest vs.",
+    "summary": "Join Nuno Maduro, renowned PHP developer and Laravel core team member, as he introduces Pest 4, a groundbreaking update to the popular PHP testing framework.",
     "youtube_url": "https://www.youtube.com/watch?v=f5gAgwwwwOI"
   },
   {
@@ -4116,7 +4116,7 @@
     "conference": "Laracon US",
     "title": "Turbocharge Your Laravel Development",
     "speaker": "Alex Six",
-    "summary": "Alex demonstrates how using tmux, a terminal multiplexer, can turbocharge Laravel development workflow by organizing terminal processes into persistent, portable sessions that free developers to focus on creative problem-solving rather than managing multiple terminal windows. Follow Alex Six: https://x.com/alexandersix_",
+    "summary": "Alex demonstrates how using tmux, a terminal multiplexer, can turbocharge Laravel development workflow by organizing terminal processes into persistent, portable sessions that free developers to focus on creative problem-solving rather than managing multiple terminal windows.",
     "youtube_url": "https://www.youtube.com/watch?v=cbn3y_f8eDM"
   },
   {
@@ -4124,7 +4124,7 @@
     "conference": "Laracon US",
     "title": "Vue's Evolution: From Framework to Ecosystem",
     "speaker": "Evan You",
-    "summary": "Evan You, creator of Vue.js and Vite, discusses Vue's growth from 1,800 weekly downloads to 7 million, highlights upcoming features in Vue 3.6 including Vapor mode for extreme performance, and shares how his company VoidZero is building a unified JavaScript toolchain with Rolldown to make Vite significantly faster. Follow Evan You on X: https://x.com/youyuxi",
+    "summary": "Evan You, creator of Vue.js and Vite, discusses Vue's growth from 1,800 weekly downloads to 7 million, highlights upcoming features in Vue 3.6 including Vapor mode for extreme performance, and shares how his company VoidZero is building a unified JavaScript toolchain with Rolldown to make Vite significantly faster.",
     "youtube_url": "https://www.youtube.com/watch?v=GUiyasQxbDw"
   },
   {
@@ -4132,7 +4132,7 @@
     "conference": "Laracon US",
     "title": "Writing Resilient Code",
     "speaker": "Zuzana Kunckova",
-    "summary": "Zuzana delivers a rapid 5‑minute primer on writing resilient web code: validate and sanitize inputs, handle errors gracefully, monitor and log meaningfully, retry and fall back to cached content, and test edge cases so your app keeps working under failure. Zuzana is on X: https://x.com/zuzana_kunckova",
+    "summary": "Zuzana delivers a rapid 5‑minute primer on writing resilient web code: validate and sanitize inputs, handle errors gracefully, monitor and log meaningfully, retry and fall back to cached content, and test edge cases so your app keeps working under failure.",
     "youtube_url": "https://www.youtube.com/watch?v=Emm559sI6tI"
   },
   {
@@ -4148,7 +4148,7 @@
     "conference": "Laracon US",
     "title": "You Should Reinvent The Wheel",
     "speaker": "Thiery Laverdure",
-    "summary": "Thiery Laverdure argues that reinventing the wheel can yield incredible value through innovation, refinement, and learning, as demonstrated by his journey building Litebase, a distributed SQLite database. Thiery Laverdure on Bluesky: https://bsky.app/profile/thierylaverdure.com We featured Thiery in one of our \"Artisan of the Day\" posts: https://blog.laravel.com/you-should-reinvent-the-wheel-the-artisan-of-the-day-is-thiery-laverdure",
+    "summary": "Thiery Laverdure argues that reinventing the wheel can yield incredible value through innovation, refinement, and learning, as demonstrated by his journey building Litebase, a distributed SQLite database.",
     "youtube_url": "https://www.youtube.com/watch?v=E4_QSEfInrc"
   },
   {

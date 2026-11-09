@@ -19,6 +19,13 @@ it('renders the whole archive on the homepage', function () {
     expect(substr_count($response->getContent(), 'data-conference='))->toBe(626);
 });
 
+it('omits placeholder descriptions without omitting their talks', function () {
+    $this->get('/')
+        ->assertOk()
+        ->assertSee('Your First Pull Request')
+        ->assertDontSee('A Laracon EU 2025 conference talk by');
+});
+
 it('ships every talk in the source archive', function () {
     $talks = json_decode(file_get_contents(database_path('data/talks.json')), true);
 
