@@ -227,18 +227,22 @@ Alpine.data('archive', (total) => ({
             this.settled = true;
             // x-show reveals the empty state on the next animation frame.
             this.$nextTick(() => requestAnimationFrame(() => {
+                const readingY = scrollY;
                 talks.style.removeProperty('min-height');
                 if (!(changed || this.shown === 0)) return;
                 const feedback = this.shown > 0
                     ? this.rows.find(row => !row.el.classList.contains('row-hidden')).el
-                    : this.$root.querySelector('.empty h2');
+                    : this.$root.querySelector('.empty');
                 const bounds = feedback.getBoundingClientRect();
                 const controls = this.$root.querySelector('.controls');
                 const bottom = controls.getBoundingClientRect().bottom;
-                if (document.activeElement === this.$refs.search && bounds.top >= bottom && bounds.bottom > innerHeight) {
+                if (this.filtered && document.activeElement === this.$refs.search && bounds.top >= bottom && bounds.bottom > innerHeight) {
                     controls.scrollIntoView({ block: 'start', behavior: 'instant' });
                 } else {
                     const top = talks.getBoundingClientRect().top;
+                    // A shorter archive can clamp to its oldest rows; that is
+                    // not the same as intentionally keeping a reading position.
+                    const clamped = readingY > document.documentElement.scrollHeight - innerHeight + 1;
                     // Keep the reading position when matching talks are still in view.
                     const visible = this.rows.some(row => {
                         if (row.el.classList.contains('row-hidden')) return false;
@@ -246,7 +250,7 @@ Alpine.data('archive', (total) => ({
                         const clearance = parseFloat(getComputedStyle(row.el).scrollMarginTop);
                         return bounds.top >= clearance && bounds.bottom <= innerHeight;
                     });
-                    if (top < bottom && !visible) window.scrollTo({ top: scrollY + top - bottom, behavior: 'instant' });
+                    if (top < bottom && (clamped || !visible)) window.scrollTo({ top: scrollY + top - bottom, behavior: 'instant' });
                 }
             }));
         }, 400);

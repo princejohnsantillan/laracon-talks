@@ -728,12 +728,12 @@
 .archive-table tbody .year-group {
     padding-block: 0;
     border-bottom: 0;
+    background: var(--raise);
 }
 
 .year-group th {
     padding-block: 0.75rem;
     padding-inline: 0 0.75rem;
-    background: var(--raise);
     font-family: var(--font-mono);
     font-size: 1.0625rem;
     font-weight: 500;
