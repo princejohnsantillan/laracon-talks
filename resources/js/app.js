@@ -26,6 +26,7 @@ Alpine.data('archive', (total) => ({
     announced: total,
     settled: true,
     feedbackTimer: null,
+    changedSinceSettle: false,
     searchHistory: false,
     rows: [],
     tickRows: [],
@@ -173,6 +174,11 @@ Alpine.data('archive', (total) => ({
 
     apply(updateUrl = true) {
         const terms = wordsIn(this.query).map(raw => ({ raw, stem: stemWord(raw) }));
+        const talks = this.$root.querySelector('#talks');
+        const top = talks.getBoundingClientRect().top;
+        // Intermediate short prefixes can hide every row. Avoid browser scroll
+        // clamping until the typing burst settles and feedback can be revealed.
+        if (top < 0) talks.style.minHeight = `${innerHeight - top}px`;
         const perYear = new Map();
         const perConference = { all: 0 };
         let shown = 0;
@@ -211,21 +217,36 @@ Alpine.data('archive', (total) => ({
         this.shown = shown;
         this.conferenceCounts = perConference;
         this.yearCounts = Object.fromEntries(perYear);
+        this.changedSinceSettle ||= resultsChanged;
         this.settled = false;
         clearTimeout(this.feedbackTimer);
         this.feedbackTimer = setTimeout(() => {
+            const changed = this.changedSinceSettle;
+            this.changedSinceSettle = false;
             this.announced = this.shown;
             this.settled = true;
             // x-show reveals the empty state on the next animation frame.
             this.$nextTick(() => requestAnimationFrame(() => {
-                if (document.activeElement !== this.$refs.search || !(resultsChanged || this.shown === 0)) return;
+                talks.style.removeProperty('min-height');
+                if (!(changed || this.shown === 0)) return;
                 const feedback = this.shown > 0
-                    ? this.rows.find(row => !row.el.classList.contains('row-hidden')).el.querySelector('.talk-link')
+                    ? this.rows.find(row => !row.el.classList.contains('row-hidden')).el
                     : this.$root.querySelector('.empty h2');
                 const bounds = feedback.getBoundingClientRect();
                 const controls = this.$root.querySelector('.controls');
-                if (bounds.top >= controls.getBoundingClientRect().bottom && bounds.bottom > innerHeight) {
+                const bottom = controls.getBoundingClientRect().bottom;
+                if (document.activeElement === this.$refs.search && bounds.top >= bottom && bounds.bottom > innerHeight) {
                     controls.scrollIntoView({ block: 'start', behavior: 'instant' });
+                } else {
+                    const top = talks.getBoundingClientRect().top;
+                    // Keep the reading position when matching talks are still in view.
+                    const visible = this.rows.some(row => {
+                        if (row.el.classList.contains('row-hidden')) return false;
+                        const bounds = row.el.querySelector('.talk-link').getBoundingClientRect();
+                        const clearance = parseFloat(getComputedStyle(row.el).scrollMarginTop);
+                        return bounds.top >= clearance && bounds.bottom <= innerHeight;
+                    });
+                    if (top < bottom && !visible) window.scrollTo({ top: scrollY + top - bottom, behavior: 'instant' });
                 }
             }));
         }, 400);
@@ -250,11 +271,6 @@ Alpine.data('archive', (total) => ({
         if (url.href !== location.href) history[updateUrl ? 'pushState' : 'replaceState'](null, '', url);
         this.$nextTick(() => {
             this.revealChip(this.$root.querySelector('.chip[aria-pressed="true"]'));
-            if (resultsChanged || shown === 0) {
-                const top = this.$root.querySelector('#talks').getBoundingClientRect().top;
-                const bottom = this.$root.querySelector('.controls').getBoundingClientRect().bottom;
-                if (top < bottom) window.scrollTo({ top: scrollY + top - bottom, behavior: 'instant' });
-            }
         });
     },
 }));

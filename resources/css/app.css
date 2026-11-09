@@ -693,7 +693,11 @@
 .archive-table {
     width: 100%;
     border-collapse: collapse;
-    text-align: left;
+    text-align: start;
+}
+
+.archive-table th {
+    text-align: start;
 }
 
 .archive-table thead th {
@@ -702,7 +706,8 @@
     top: calc(var(--controls-h, 104px) - 1px);
     z-index: 10;
     background: var(--paper);
-    padding: 0.75rem 1rem 0.6875rem 0;
+    padding-block: 0.75rem 0.6875rem;
+    padding-inline: 0 1rem;
     font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 500;
@@ -726,7 +731,8 @@
 }
 
 .year-group th {
-    padding: 0.75rem;
+    padding-block: 0.75rem;
+    padding-inline: 0 0.75rem;
     background: var(--raise);
     font-family: var(--font-mono);
     font-size: 1.0625rem;
@@ -736,7 +742,7 @@
 }
 
 .year-total {
-    margin-left: 0.75rem;
+    margin-inline-start: 0.75rem;
     font-size: 0.75rem;
     font-weight: 400;
     letter-spacing: 0.04em;
@@ -744,7 +750,8 @@
 }
 
 .archive-table td {
-    padding: 0.9375rem 1rem 0.9375rem 0;
+    padding-block: 0.9375rem;
+    padding-inline: 0 1rem;
     vertical-align: top;
 }
 
@@ -949,7 +956,7 @@
     .cell-year {
         position: absolute;
         top: 1.3125rem;
-        right: 0;
+        inset-inline-end: 0;
         padding-top: 0 !important;
     }
 
@@ -1117,7 +1124,7 @@
     .archive-table .cell-year {
         display: inline-block;
         position: static;
-        margin-right: 0.75rem;
+        margin-inline-end: 0.75rem;
     }
 
     .archive-table .cell-conf {
@@ -1125,7 +1132,7 @@
     }
 
     .cell-title {
-        padding-right: 0;
+        padding-inline-end: 0;
     }
 }
 
