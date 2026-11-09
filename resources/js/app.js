@@ -167,7 +167,8 @@ Alpine.data('archive', (total) => ({
         }
 
         event.preventDefault();
-        this.$refs.search.focus();
+        this.$refs.search.focus({ preventScroll: true });
+        this.$root.querySelector('.controls').scrollIntoView({ block: 'start', behavior: 'instant' });
     },
 
     apply(updateUrl = true) {
@@ -215,6 +216,18 @@ Alpine.data('archive', (total) => ({
         this.feedbackTimer = setTimeout(() => {
             this.announced = this.shown;
             this.settled = true;
+            // x-show reveals the empty state on the next animation frame.
+            this.$nextTick(() => requestAnimationFrame(() => {
+                if (document.activeElement !== this.$refs.search || !(resultsChanged || this.shown === 0)) return;
+                const feedback = this.shown > 0
+                    ? this.rows.find(row => !row.el.classList.contains('row-hidden')).el.querySelector('.talk-link')
+                    : this.$root.querySelector('.empty h2');
+                const bounds = feedback.getBoundingClientRect();
+                const controls = this.$root.querySelector('.controls');
+                if (bounds.top >= controls.getBoundingClientRect().bottom && bounds.bottom > innerHeight) {
+                    controls.scrollIntoView({ block: 'start', behavior: 'instant' });
+                }
+            }));
         }, 400);
 
         for (const { el, year, ticks } of this.tickRows) {

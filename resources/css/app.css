@@ -706,6 +706,8 @@
     font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 500;
+    line-height: 1.5;
+    vertical-align: middle;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--faint);
@@ -724,11 +726,12 @@
 }
 
 .year-group th {
-    padding: 1rem 0 0.75rem;
+    padding: 0.75rem;
+    background: var(--raise);
     font-family: var(--font-mono);
-    font-size: 0.8125rem;
+    font-size: 1.0625rem;
     font-weight: 500;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.04em;
     color: var(--brand);
 }
 
@@ -751,7 +754,10 @@
     font-size: 0.75rem;
     font-variant-numeric: tabular-nums;
     color: var(--faint);
-    padding-top: 1.0625rem !important;
+}
+
+.archive-table td.cell-year {
+    padding-top: 1.0625rem;
 }
 
 .cell-conf {
@@ -1173,11 +1179,8 @@
 /* Footer ------------------------------------------------------------------ */
 .site-footer {
     padding-block: 2.5rem 3.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem 2rem;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    gap: 0.75rem;
     font-size: 0.8125rem;
     color: var(--faint);
     line-height: 1.6;
