@@ -572,7 +572,7 @@
     "conference": "Laracon US",
     "title": "Tests Should Tell a Story",
     "speaker": "Matthew Machuga",
-    "summary": "Matthew Machuca gives a detailed talk about testing methodologies, focusing on behavior-driven development and test storytelling. He shares his experience working at Think Through Math, where he discovered and fixed bugs in their student-teacher pairing algorithm through better test practices.",
+    "summary": "Matthew Machuga gives a detailed talk about testing methodologies, focusing on behavior-driven development and test storytelling. He shares his experience working at Think Through Math, where he discovered and fixed bugs in their student-teacher pairing algorithm through better test practices.",
     "youtube_url": "https://www.youtube.com/watch?v=LbPx8gdgLFc"
   },
   {
@@ -604,7 +604,7 @@
     "conference": "Laracon US",
     "title": "Wizards, Lawnmowers, Hovercrafts",
     "speaker": "Jack McDade",
-    "summary": "Jack McBain delivers an engaging talk about managing creativity, maintaining perspective, and building authentic products. He discusses how creativity is a renewable resource that needs to be managed carefully, shares insights about avoiding narrow perspectives through an amusing RadioShack anecdote, and emphasizes the importance of authenticity in product development and marketing.",
+    "summary": "Jack McDade delivers an engaging talk about managing creativity, maintaining perspective, and building authentic products. He discusses how creativity is a renewable resource that needs to be managed carefully, shares insights about avoiding narrow perspectives through an amusing RadioShack anecdote, and emphasizes the importance of authenticity in product development and marketing.",
     "youtube_url": "https://www.youtube.com/watch?v=hq8OQZGi3ec"
   },
   {
@@ -620,7 +620,7 @@
     "conference": "Laracon US",
     "title": "Zero to API with Lumen",
     "speaker": "Amanda Folson",
-    "summary": "Amanda Fulson gives a comprehensive introduction to building APIs with Lumen, Laravel's micro-framework. She explains how Lumen differs from Laravel, demonstrates creating a basic REST API for a Pokémon Pokedex application, and covers key concepts like routing, authentication, and testing in Lumen.",
+    "summary": "Amanda Folson gives a comprehensive introduction to building APIs with Lumen, Laravel's micro-framework. She explains how Lumen differs from Laravel, demonstrates creating a basic REST API for a Pokémon Pokedex application, and covers key concepts like routing, authentication, and testing in Lumen.",
     "youtube_url": "https://www.youtube.com/watch?v=BmPTaMS2NLY"
   },
   {
@@ -731,8 +731,8 @@
     "year": 2016,
     "conference": "Laracon EU",
     "title": "Project Utopia",
-    "speaker": "Caryn Humphreys,",
-    "summary": "Jesse and Corinne from Vehicle share their experiences and best practices for running successful software projects. They discuss their approach to client relationships, project management, and team collaboration. Key aspects include weekly billing cycles, emphasis on discovery and planning phases, structured meetings, and maintaining collaborative relationships with clients. They also share insights on handling project pivots, managing multiple projects, and conducting effective retrospectives.",
+    "speaker": "Caryn Humphreys and Jesse O'Brien",
+    "summary": "Jesse O'Brien and Caryn Humphreys share their experiences and best practices for running successful software projects. They discuss their approach to client relationships, project management, and team collaboration. Key aspects include weekly billing cycles, emphasis on discovery and planning phases, structured meetings, and maintaining collaborative relationships with clients. They also share insights on handling project pivots, managing multiple projects, and conducting effective retrospectives.",
     "youtube_url": "https://www.youtube.com/watch?v=WARtjv330mg"
   },
   {
@@ -852,7 +852,7 @@
     "conference": "Laracon US",
     "title": "Launching and Scaling Your Side Project",
     "speaker": "Mathias Hansen, Michele Hansen",
-    "summary": "Michele and Matthias Hansen share their experience launching and scaling Geocodio, a successful side project that provides geocoding services. They discuss building an MVP, pricing strategies, infrastructure scaling, and maintaining work-life balance while running a side business.",
+    "summary": "Michele and Mathias Hansen share their experience launching and scaling Geocodio, a successful side project that provides geocoding services. They discuss building an MVP, pricing strategies, infrastructure scaling, and maintaining work-life balance while running a side business.",
     "youtube_url": "https://www.youtube.com/watch?v=ya7Jpw6ISK4"
   },
   {
@@ -899,8 +899,8 @@
     "year": 2017,
     "conference": "Laracon US",
     "title": "Webpack",
-    "speaker": "Sean Larkinn",
-    "summary": "Shawn Larkin, a Microsoft program manager and webpack maintainer, gives a detailed technical overview of webpack, explaining its core concepts, architecture, and importance in modern web development. He breaks down how webpack works under the hood, covering its module bundling system, plugin architecture, and integration with various frameworks including Laravel.",
+    "speaker": "Sean Larkin",
+    "summary": "Sean Larkin, a Microsoft program manager and webpack maintainer, gives a detailed technical overview of webpack, explaining its core concepts, architecture, and importance in modern web development. He breaks down how webpack works under the hood, covering its module bundling system, plugin architecture, and integration with various frameworks including Laravel.",
     "youtube_url": "https://www.youtube.com/watch?v=6qw3DOPxzkM"
   },
   {
@@ -1268,7 +1268,7 @@
     "conference": "Laracon EU",
     "title": "Build bridges, not walls—Design for users across cultures",
     "speaker": "Jenny Shen",
-    "summary": "This talk focuses on designing products for users from different cultural backgrounds. The speaker, Jenny Chen, shares her experiences and insights on how cultural differences affect UX/UI design and provides practical strategies for developing globally accessible products. She emphasizes the importance of understanding local cultures, conducting proper research, and avoiding common pitfalls like using Google Translate for localization.",
+    "summary": "This talk focuses on designing products for users from different cultural backgrounds. The speaker, Jenny Shen, shares her experiences and insights on how cultural differences affect UX/UI design and provides practical strategies for developing globally accessible products. She emphasizes the importance of understanding local cultures, conducting proper research, and avoiding common pitfalls like using Google Translate for localization.",
     "youtube_url": "https://www.youtube.com/watch?v=uPsMTpdfWTI"
   },
   {
@@ -1324,7 +1324,7 @@
     "conference": "Laracon EU",
     "title": "How we abused PHP and Laravel to do Big Data",
     "speaker": "Marten Westphal",
-    "summary": "Martin Westfall presents how About You, an e-commerce fashion company, built a data consolidation system called 'Cube' using PHP and Laravel over 2.5 years. Despite initial skepticism about using PHP for big data, the team successfully created a system that handles massive data processing through clever chunking, custom collection implementations, and integration with Google BigQuery. The talk covers their journey of overcoming PHP's limitations, performance optimization, and building a scalable system that saved costs compared to their previous Hadoop solution.",
+    "summary": "Marten Westphal presents how About You, an e-commerce fashion company, built a data consolidation system called 'Cube' using PHP and Laravel over 2.5 years. Despite initial skepticism about using PHP for big data, the team successfully created a system that handles massive data processing through clever chunking, custom collection implementations, and integration with Google BigQuery. The talk covers their journey of overcoming PHP's limitations, performance optimization, and building a scalable system that saved costs compared to their previous Hadoop solution.",
     "youtube_url": "https://www.youtube.com/watch?v=P0LfWwU7ToA"
   },
   {
@@ -1378,9 +1378,9 @@
   {
     "year": 2018,
     "conference": "Laracon EU",
-    "title": "Nintendo Emulation in javascript + Vuejs",
+    "title": "Migrating a 15 Year Old Enterprise Application to Laravel",
     "speaker": "Taylor Dondich",
-    "summary": "Taylor Donnici shares his experiences building enterprise applications with Laravel at Process Maker, discussing the evolution from legacy systems to modern Laravel architecture. He covers key aspects of enterprise development including security, testing, CI/CD pipelines, and asynchronous job processing. The talk includes a live demo of Process Maker's new Laravel-based workflow management system and highlights their open source contributions to the Laravel ecosystem.",
+    "summary": "Taylor Dondich shares his experiences building enterprise applications with Laravel at Process Maker, discussing the evolution from legacy systems to modern Laravel architecture. He covers key aspects of enterprise development including security, testing, CI/CD pipelines, and asynchronous job processing. The talk includes a live demo of Process Maker's new Laravel-based workflow management system and highlights their open source contributions to the Laravel ecosystem.",
     "youtube_url": "https://www.youtube.com/watch?v=QdSXj6Pm5K0"
   },
   {
@@ -1420,7 +1420,7 @@
     "conference": "Laracon EU",
     "title": "Twelve-Factor Apps",
     "speaker": "Alex Bilbie",
-    "summary": "Alex Bilby presents a comprehensive overview of the 12-factor app methodology and how it applies to Laravel applications. He discusses best practices for deployment, configuration management, and scalability, emphasizing the importance of containerization with Docker, proper environment variable handling, and stateless application design. The talk combines theoretical concepts with practical examples from his experience as a DevOps consultant.",
+    "summary": "Alex Bilbie presents a comprehensive overview of the 12-factor app methodology and how it applies to Laravel applications. He discusses best practices for deployment, configuration management, and scalability, emphasizing the importance of containerization with Docker, proper environment variable handling, and stateless application design. The talk combines theoretical concepts with practical examples from his experience as a DevOps consultant.",
     "youtube_url": "https://www.youtube.com/watch?v=L5zAH3jIboQ"
   },
   {
@@ -1524,7 +1524,7 @@
     "conference": "Laracon AU",
     "title": "Goodbye, Silicon Valley: The Rise of the Indie Way",
     "speaker": "Kate Kendall",
-    "summary": "Kate Kendell shares her journey from Silicon Valley to becoming an advocate for the 'indie' way of building companies. She discusses the problems with traditional VC-backed startups and presents an alternative approach focused on sustainable growth, profitability, and maintaining control rather than chasing exits and valuations.",
+    "summary": "Kate Kendall shares her journey from Silicon Valley to becoming an advocate for the 'indie' way of building companies. She discusses the problems with traditional VC-backed startups and presents an alternative approach focused on sustainable growth, profitability, and maintaining control rather than chasing exits and valuations.",
     "youtube_url": "https://www.youtube.com/watch?v=qLFwonjpwiE"
   },
   {
@@ -1572,7 +1572,7 @@
     "conference": "Laracon AU",
     "title": "Resisting complexity",
     "speaker": "Adam Wathan",
-    "summary": "In this talk, Adam Whalen discusses how to simplify Laravel code by rethinking object-oriented programming patterns. He argues that methods should be viewed as affordances (things you can do with an object) rather than abilities (things an object can do to other things).",
+    "summary": "In this talk, Adam Wathan discusses how to simplify Laravel code by rethinking object-oriented programming patterns. He argues that methods should be viewed as affordances (things you can do with an object) rather than abilities (things an object can do to other things).",
     "youtube_url": "https://www.youtube.com/watch?v=UyaejTqR3Tc"
   },
   {
@@ -1684,7 +1684,7 @@
     "conference": "Laracon US",
     "title": "Some Shifty Bits",
     "speaker": "Jason McCreary",
-    "summary": "The talk focuses on lesser-known but powerful Laravel features that analysis of Laravel Shift data suggests are underutilized. The speaker, Jase McCreary (creator of Laravel Shift), demonstrates various Laravel features including model casting, authorization gates, signed URLs, and helper methods that can make code more expressive and maintainable while reducing custom implementation code.",
+    "summary": "The talk focuses on lesser-known but powerful Laravel features that analysis of Laravel Shift data suggests are underutilized. The speaker, Jason McCreary (creator of Laravel Shift), demonstrates various Laravel features including model casting, authorization gates, signed URLs, and helper methods that can make code more expressive and maintainable while reducing custom implementation code.",
     "youtube_url": "https://www.youtube.com/watch?v=bvR9rWSM2bM"
   },
   {
@@ -2020,7 +2020,7 @@
     "conference": "Laracon AU",
     "title": "Expressive Eloquent collections",
     "speaker": "Tim MacDonald",
-    "summary": "Tim McDonald discusses how to make Laravel Eloquent collections more expressive and maintainable. He explores how collections can be extended to better reflect domain language, reduce code duplication, and improve readability.",
+    "summary": "Tim MacDonald discusses how to make Laravel Eloquent collections more expressive and maintainable. He explores how collections can be extended to better reflect domain language, reduce code duplication, and improve readability.",
     "youtube_url": "https://www.youtube.com/watch?v=06--kezKc0Q"
   },
   {
@@ -2178,9 +2178,9 @@
   {
     "year": 2020,
     "conference": "Laracon EU",
-    "title": "Nuno Maduro",
-    "speaker": "Introducing Pest",
-    "summary": "Nuno presents Pest, an elegant PHP testing framework built on top of PHPUnit. The talk demonstrates how Pest simplifies testing syntax, reduces boilerplate code, and provides a more user-friendly experience through features like higher-order tests, datasets, and improved test coverage reporting. The framework maintains compatibility with existing PHPUnit tests while offering a more modern and concise testing API.",
+    "title": "Introducing Pest",
+    "speaker": "Nuno Maduro",
+    "summary": "Nuno Maduro presents Pest, an elegant PHP testing framework built on top of PHPUnit. The talk demonstrates how Pest simplifies testing syntax, reduces boilerplate code, and provides a more user-friendly experience through features like higher-order tests, datasets, and improved test coverage reporting. The framework maintains compatibility with existing PHPUnit tests while offering a more modern and concise testing API.",
     "youtube_url": "https://www.youtube.com/watch?v=lEvau6CgqPE"
   },
   {
@@ -2380,7 +2380,7 @@
     "conference": "Laracon EU",
     "title": "10 Tips To Be More Productive With PhpStorm",
     "speaker": "Christoph Rumpel",
-    "summary": "A comprehensive talk by Christopher demonstrating 10 productivity tips and tricks for using PHPStorm IDE more effectively. The speaker covers various features including productivity guides, refactoring tools, namespace management, postfix templates, and multiple cursors functionality. The presentation focuses on practical demonstrations of each feature with real-world use cases.",
+    "summary": "A comprehensive talk by Christoph Rumpel demonstrating 10 productivity tips and tricks for using PHPStorm IDE more effectively. The speaker covers various features including productivity guides, refactoring tools, namespace management, postfix templates, and multiple cursors functionality. The presentation focuses on practical demonstrations of each feature with real-world use cases.",
     "youtube_url": "https://www.youtube.com/watch?v=fDFWsgIIUBo"
   },
   {
@@ -2508,7 +2508,7 @@
     "conference": "Laracon EU",
     "title": "Map Mastery – Spatial Tips for Your Laravel App",
     "speaker": "David Piesse",
-    "summary": "David Peace presents a comprehensive guide on working with spatial data and maps in Laravel applications. He shares lessons learned from his experience as both a GIS and Laravel developer, covering everything from choosing the right mapping libraries and data providers to implementing efficient spatial queries and best practices for displaying geographic data.",
+    "summary": "David Piesse presents a comprehensive guide on working with spatial data and maps in Laravel applications. He shares lessons learned from his experience as both a GIS and Laravel developer, covering everything from choosing the right mapping libraries and data providers to implementing efficient spatial queries and best practices for displaying geographic data.",
     "youtube_url": "https://www.youtube.com/watch?v=xkwSDZ2rqc4"
   },
   {
@@ -2796,7 +2796,7 @@
     "conference": "Laracon EU",
     "title": "Building GitHub Actions in PHP with Minicli",
     "speaker": "Erika Heidi",
-    "summary": "Erica Heidi presents how to build GitHub Actions using PHP and MiniCLI (a micro-framework she created). She demonstrates the process by building an action that imports posts from Dev.to and saves them as markdown files, covering GitHub Actions core concepts, workflow configuration, and practical implementation details.",
+    "summary": "Erika Heidi presents how to build GitHub Actions using PHP and MiniCLI (a micro-framework she created). She demonstrates the process by building an action that imports posts from Dev.to and saves them as markdown files, covering GitHub Actions core concepts, workflow configuration, and practical implementation details.",
     "youtube_url": "https://www.youtube.com/watch?v=3GQQroHZbR8"
   },
   {
@@ -3300,7 +3300,7 @@
     "conference": "Laracon AU",
     "title": "Cultivating success with Laravel",
     "speaker": "Richard Merryweather",
-    "summary": "Richard Mar, Head of Engineering at Figured, shares how Laravel helped transform their farm financial management software from a problematic Ruby on Rails application to a successful, scalable SaaS product. He discusses how they rewrote their entire application in Laravel within 6 weeks, achieving 100% feature parity, and how Laravel has enabled them to grow to serve over 35,000 customers across multiple countries while processing billions of financial transactions.",
+    "summary": "Richard Merryweather, Head of Engineering at Figured, shares how Laravel helped transform their farm financial management software from a problematic Ruby on Rails application to a successful, scalable SaaS product. He discusses how they rewrote their entire application in Laravel within 6 weeks, achieving 100% feature parity, and how Laravel has enabled them to grow to serve over 35,000 customers across multiple countries while processing billions of financial transactions.",
     "youtube_url": "https://www.youtube.com/watch?v=FpRfloGCruk"
   },
   {
@@ -3356,7 +3356,7 @@
     "conference": "Laracon AU",
     "title": "Put Verbs in your database",
     "speaker": "Daniel Coulbourne",
-    "summary": "Daniel Kurn presents 'Verbs', a Laravel package for event sourcing that aims to make it more ergonomic and developer-friendly. Through live coding, he demonstrates how to refactor a job application system from using traditional status columns to an event-sourced approach, showing how this better captures business requirements and handles state transitions while making it easier to track history and implement features like notifications.",
+    "summary": "Daniel Coulbourne presents 'Verbs', a Laravel package for event sourcing that aims to make it more ergonomic and developer-friendly. Through live coding, he demonstrates how to refactor a job application system from using traditional status columns to an event-sourced approach, showing how this better captures business requirements and handles state transitions while making it easier to track history and implement features like notifications.",
     "youtube_url": "https://www.youtube.com/watch?v=-mb2L97Yq88"
   },
   {
@@ -3572,7 +3572,7 @@
     "conference": "Laracon EU",
     "title": "Explore The Art Of Customising Tailwindcss",
     "speaker": "Shruti Balasa",
-    "summary": "Shti Balasa gives a comprehensive talk about best practices for customizing Tailwind CSS, focusing on when and how to customize the framework effectively. The speaker emphasizes maintainable approaches to customization, discusses where to place customizations (CSS vs JavaScript config), and demonstrates how to create custom plugins and components while maintaining good developer experience.",
+    "summary": "Shruti Balasa gives a comprehensive talk about best practices for customizing Tailwind CSS, focusing on when and how to customize the framework effectively. The speaker emphasizes maintainable approaches to customization, discusses where to place customizations (CSS vs JavaScript config), and demonstrates how to create custom plugins and components while maintaining good developer experience.",
     "youtube_url": "https://www.youtube.com/watch?v=mVdV1Z3srBU"
   },
   {
@@ -3620,15 +3620,15 @@
     "conference": "Laracon EU",
     "title": "Managing 5000+ Tests Efficiently",
     "speaker": "Christoph Rumpel",
-    "summary": "Christof Rülle shares his journey of managing and optimizing a large Laravel test suite with over 5,000 tests that initially took 50 minutes to run. He discusses the challenges faced and solutions implemented, including parallel testing, optimizing setup methods, and dealing with caching issues, ultimately reducing the test runtime to 5 minutes.",
+    "summary": "Christoph Rumpel shares his journey of managing and optimizing a large Laravel test suite with over 5,000 tests that initially took 50 minutes to run. He discusses the challenges faced and solutions implemented, including parallel testing, optimizing setup methods, and dealing with caching issues, ultimately reducing the test runtime to 5 minutes.",
     "youtube_url": "https://www.youtube.com/watch?v=tDqPe8LbWEI"
   },
   {
     "year": 2024,
     "conference": "Laracon EU",
-    "title": "Maximizing Your Team'S Performance",
+    "title": "Maximizing Your Team's Performance",
     "speaker": "Katerina Trajchevska",
-    "summary": "Kaarina discusses how to improve team performance and code quality, particularly when dealing with legacy code. She explores strategies for writing testable code, implementing proper design patterns, and making incremental improvements. The talk covers characterization testing for legacy code, using SOLID principles for new features, and techniques like sprouting and wrapping for extending legacy systems while maintaining code quality.",
+    "summary": "Katerina Trajchevska discusses how to improve team performance and code quality, particularly when dealing with legacy code. She explores strategies for writing testable code, implementing proper design patterns, and making incremental improvements. The talk covers characterization testing for legacy code, using SOLID principles for new features, and techniques like sprouting and wrapping for extending legacy systems while maintaining code quality.",
     "youtube_url": "https://www.youtube.com/watch?v=jPq6jHMhTv0"
   },
   {
@@ -3651,7 +3651,7 @@
     "year": 2024,
     "conference": "Laracon EU",
     "title": "Reusing Reusable Livewire Components",
-    "speaker": "Philo",
+    "speaker": "Philo Hermans",
     "summary": "The talk covers creating reusable Livewire components in Laravel, focusing on building a dynamic modal system. The speaker demonstrates how to create interactive UI components using Livewire 3 and Alpine.js, including lazy loading, event handling, and state management. He showcases practical examples through building a login modal and discusses his experience creating Wire Elements, a component library for Livewire.",
     "youtube_url": "https://www.youtube.com/watch?v=MbynDaPaBt4"
   },
@@ -3660,7 +3660,7 @@
     "conference": "Laracon EU",
     "title": "Running Laravel Apps With FrankenPHP",
     "speaker": "Kévin Dunglas",
-    "summary": "Kevin Dunglas introduces FrankenPHP, a modern PHP application server that replaces traditional PHP-FPM/Apache setups. He explains how FrankenPHP simplifies deployment, improves performance through Laravel Octane integration, and offers features like HTTP/3 support and built-in Mercure for real-time capabilities. The talk covers both basic usage and advanced features like packaging PHP applications as standalone binaries.",
+    "summary": "Kévin Dunglas introduces FrankenPHP, a modern PHP application server that replaces traditional PHP-FPM/Apache setups. He explains how FrankenPHP simplifies deployment, improves performance through Laravel Octane integration, and offers features like HTTP/3 support and built-in Mercure for real-time capabilities. The talk covers both basic usage and advanced features like packaging PHP applications as standalone binaries.",
     "youtube_url": "https://www.youtube.com/watch?v=PzOLyz1vr5I"
   },
   {
@@ -3668,7 +3668,7 @@
     "conference": "Laracon EU",
     "title": "Scaling Databases",
     "speaker": "Tobias Petry",
-    "summary": "Tobias Petri discusses database scaling strategies in Laravel applications, focusing on the progression from single server to read replication to sharding. He emphasizes the importance of optimizing existing setups before moving to more complex solutions, warns about common pitfalls in each scaling approach, and explains how different scaling solutions fit different application needs. The talk includes practical examples using a hypothetical Laravel e-commerce platform selling conference tickets.",
+    "summary": "Tobias Petry discusses database scaling strategies in Laravel applications, focusing on the progression from single server to read replication to sharding. He emphasizes the importance of optimizing existing setups before moving to more complex solutions, warns about common pitfalls in each scaling approach, and explains how different scaling solutions fit different application needs. The talk includes practical examples using a hypothetical Laravel e-commerce platform selling conference tickets.",
     "youtube_url": "https://www.youtube.com/watch?v=QbsmLXmpYXo"
   },
   {
@@ -3676,7 +3676,7 @@
     "conference": "Laracon EU",
     "title": "Surviving Large Applications",
     "speaker": "Bobby Bouwmann",
-    "summary": "Bobby Balman from Hospitable discusses strategies for maintaining and surviving large Laravel applications. He shares experiences from managing a large-scale Laravel application processing 51 million jobs daily, emphasizing the importance of consistent code structure, proper testing, and following Laravel defaults. The talk focuses on practical approaches to organizing code in domains/modules while keeping things simple and maintainable.",
+    "summary": "Bobby Bouwmann from Hospitable discusses strategies for maintaining and surviving large Laravel applications. He shares experiences from managing a large-scale Laravel application processing 51 million jobs daily, emphasizing the importance of consistent code structure, proper testing, and following Laravel defaults. The talk focuses on practical approaches to organizing code in domains/modules while keeping things simple and maintainable.",
     "youtube_url": "https://www.youtube.com/watch?v=jX3nWXyLank"
   },
   {
@@ -3691,7 +3691,7 @@
     "year": 2024,
     "conference": "Laracon EU",
     "title": "Thoughtful Performance",
-    "speaker": "Tim",
+    "speaker": "Tim MacDonald",
     "summary": "A talk focused on thoughtful performance optimization in Laravel applications, covering strategies for concurrent operations, cache management, and rate limiting. The speaker discusses various techniques including HTTP request pooling, process concurrency, cache warming strategies, and implementing rate limits to ensure fair resource distribution among users.",
     "youtube_url": "https://www.youtube.com/watch?v=NcucthcnGY0"
   },
@@ -3707,7 +3707,7 @@
     "year": 2024,
     "conference": "Laracon EU",
     "title": "Unveiling The Modular Monolith",
-    "speaker": "Mateus",
+    "speaker": "Mateus Guimarães",
     "summary": "This talk covers modular monoliths as an architectural approach for Laravel applications. The speaker discusses how to organize code into modules while maintaining the benefits of a monolithic application, exploring concepts like boundary definition, inter-module communication through events, and data ownership. He contrasts this with both traditional monoliths and microservices, explaining how modular monoliths can provide a middle ground that offers better code organization and team independence while avoiding the complexity of distributed systems.",
     "youtube_url": "https://www.youtube.com/watch?v=WqL6wgH1fKs"
   },
@@ -3716,7 +3716,7 @@
     "conference": "Laracon EU",
     "title": "Window Magic, Command Line Wizardry",
     "speaker": "Rissa Jackson",
-    "summary": "Marissa Jackson presents a comprehensive talk on command line tools and window management for developers, focusing on improving workflow efficiency. She demonstrates various tools including Hammerspoon for window management, Oh My Zsh for terminal customization, and Raycast for productivity. The presentation includes live demos of snippets, quick links, and clipboard management, with particular emphasis on making development workflows more efficient and enjoyable.",
+    "summary": "Rissa Jackson presents a comprehensive talk on command line tools and window management for developers, focusing on improving workflow efficiency. She demonstrates various tools including Hammerspoon for window management, Oh My Zsh for terminal customization, and Raycast for productivity. The presentation includes live demos of snippets, quick links, and clipboard management, with particular emphasis on making development workflows more efficient and enjoyable.",
     "youtube_url": "https://www.youtube.com/watch?v=Bqm2tGQQFo4"
   },
   {
