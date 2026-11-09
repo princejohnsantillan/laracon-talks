@@ -34,7 +34,8 @@ it('uses local lazy posters and keeps unavailable and timestamped talks watchabl
     $xpath = new DOMXPath($document);
     $links = $xpath->query('//a[@class="talk-link"]');
 
-    expect($links->length)->toBe(626);
+    expect($links->length)->toBe(626)
+        ->and($xpath->query('//tr[@data-conference]//a')->length)->toBe(626);
 
     foreach ($xpath->query('//a[@class="talk-link"]//img') as $image) {
         expect($image->getAttribute('src'))->toStartWith(asset('thumbnails/'))
@@ -50,7 +51,7 @@ it('uses local lazy posters and keeps unavailable and timestamped talks watchabl
     }
 
     $unavailable = $xpath->query('//a[@class="talk-link" and contains(@href, "0WqSvhQ31MQ")]')->item(0);
-    expect(trim($unavailable->textContent))->toBe('Laravel Pulse: Behind the Scenes')
+    expect($unavailable->getAttribute('aria-label'))->toBe('Watch “Laravel Pulse: Behind the Scenes” on YouTube (opens in a new tab)')
         ->and($xpath->query('.//img', $unavailable)->length)->toBe(0);
 });
 

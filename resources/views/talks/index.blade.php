@@ -186,14 +186,13 @@
                     <th scope="col" class="cell-title">Talk</th>
                     <th scope="col" class="cell-speaker">Speaker</th>
                     <th scope="col" class="cell-summary">Summary</th>
-                    <th scope="col" class="cell-watch"><span class="sr-only">Video</span></th>
                 </tr>
             </thead>
             @foreach ($talks->groupBy('year') as $year => $yearTalks)
             <tbody role="rowgroup" @focusin="revealTalk($event)"
                 :class="{ 'row-hidden': (year !== null && year !== '{{ $year }}') || !yearCounts['{{ $year }}'] }">
                 <tr class="year-group">
-                    <th scope="rowgroup" colspan="6">
+                    <th scope="rowgroup" colspan="5">
                         {{ $year }}
                         <span class="year-total" x-text="yearCounts['{{ $year }}'] + (yearCounts['{{ $year }}'] === 1 ? ' talk' : ' talks')">{{ $yearTalks->count() }} {{ $yearTalks->count() === 1 ? 'talk' : 'talks' }}</span>
                     </th>
@@ -213,19 +212,18 @@
                                          loading="lazy" decoding="async" x-on:error="$el.remove()">
                                 @endif
                             </span>
-                            <span class="talk-title">{{ $talk['title'] }}</span>
+                            <span class="talk-copy">
+                                <span class="watch" aria-hidden="true">
+                                    Watch
+                                    <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4">
+                                        <path d="M2.5 7.5 7.5 2.5M3.6 2.5h3.9v3.9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                                <span class="talk-title">{{ $talk['title'] }}</span>
+                            </span>
                         </a></td>
                         <td class="cell-speaker">{{ $talk['speaker'] }}</td>
                         <td class="cell-summary">{{ $talk['summary'] }}</td>
-                        <td class="cell-watch">
-                            <a class="watch" href="{{ $talk['youtube_url'] }}" target="_blank" rel="noopener noreferrer"
-                               tabindex="-1" aria-hidden="true">
-                                Watch
-                                <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-                                    <path d="M2.5 7.5 7.5 2.5M3.6 2.5h3.9v3.9" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </a>
-                        </td>
                     </tr>
                 @endforeach
             </tbody>

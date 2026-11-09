@@ -315,6 +315,7 @@
     gap: 0.75rem;
     width: 100%;
     padding-block: 0.28rem;
+    padding-inline: 0.5rem;
     border: 0;
     background: none;
     text-align: left;
@@ -431,9 +432,8 @@
     position: sticky;
     top: 0;
     z-index: 30;
-    border-block: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
     background: var(--paper);
-    box-shadow: 0 2px 6px #00000008;
 }
 
 .controls-inner {
@@ -456,7 +456,9 @@
     display: flex;
     align-items: center;
     gap: 0.625rem;
-    border-bottom: 1px solid var(--line);
+    padding-inline: 0.75rem;
+    border-radius: 4px;
+    background: var(--raise);
 }
 
 .search-field svg {
@@ -701,7 +703,6 @@
     z-index: 10;
     background: var(--paper);
     padding: 0.75rem 1rem 0.6875rem 0;
-    border-bottom: 1px solid var(--line);
     font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 500;
@@ -719,11 +720,11 @@
 
 .archive-table tbody .year-group {
     padding-block: 0;
+    border-bottom: 0;
 }
 
 .year-group th {
     padding: 1rem 0 0.75rem;
-    border-bottom: 1px solid var(--line);
     font-family: var(--font-mono);
     font-size: 0.8125rem;
     font-weight: 500;
@@ -793,19 +794,14 @@
     max-width: 34rem;
 }
 
-.cell-watch {
-    width: 5.5rem;
-    text-align: right;
-    padding-right: 0 !important;
-}
-
 .watch {
     display: inline-flex;
     align-items: center;
-    min-height: 36px;
     gap: 0.3125rem;
+    margin-bottom: 0.375rem;
     font-family: var(--font-mono);
     font-size: 0.75rem;
+    font-weight: 400;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--brand);
@@ -820,7 +816,7 @@
 }
 
 @media (hover: hover) {
-    .watch:hover svg {
+    .talk-link:hover .watch svg {
         transform: translate(1px, -1px);
     }
 }
@@ -838,7 +834,12 @@
     scroll-margin-top: calc(var(--controls-h, 125px) + 3.25rem);
 }
 
+.talk-copy {
+    min-width: 0;
+}
+
 .talk-title {
+    display: block;
     min-width: 0;
     text-decoration: underline;
     text-decoration-color: var(--line);
@@ -974,11 +975,6 @@
         display: none;
     }
 
-    .cell-watch {
-        margin-top: 0.75rem;
-        text-align: left;
-    }
-
     .hero {
         gap: 1.25rem;
         padding-block: 2rem 1.25rem;
@@ -998,6 +994,11 @@
 
     .hero-facts {
         margin-top: 1rem;
+    }
+
+    .ledger {
+        border-top: 0;
+        padding-top: 0;
     }
 
     .ledger-content.mobile-collapsed {
@@ -1030,8 +1031,7 @@
     .theme-toggle,
     .chip,
     .chip-clear,
-    .chip-year,
-    .watch {
+    .chip-year {
         min-height: 44px;
     }
 
@@ -1124,7 +1124,7 @@
 }
 
 @media (pointer: coarse) {
-    .theme-toggle, .ledger-row, .chip, .chip-clear, .chip-year, .watch {
+    .theme-toggle, .ledger-row, .chip, .chip-clear, .chip-year {
         min-height: 44px;
     }
 }
