@@ -733,7 +733,7 @@
 
 .year-group th {
     padding-block: 0.75rem;
-    padding-inline: 0 0.75rem;
+    padding-inline: 1rem;
     font-family: var(--font-mono);
     font-size: 1.0625rem;
     font-weight: 500;
@@ -1052,7 +1052,11 @@
         flex-wrap: nowrap;
         overflow-x: auto;
         padding: 5px 6px;
-        scrollbar-width: thin;
+        scrollbar-width: none;
+    }
+
+    .chips::-webkit-scrollbar {
+        display: none;
     }
 
     .chip-strip::before,
@@ -1119,6 +1123,10 @@
 
     .archive-table tbody tr {
         padding-inline: 1rem;
+    }
+
+    .archive-table tbody .year-group {
+        padding-inline: 0;
     }
 
     .archive-table .cell-year {
