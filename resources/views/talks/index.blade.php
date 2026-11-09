@@ -29,9 +29,8 @@
         })();
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" href="{{ asset('fonts/instrument-sans-latin.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('fonts/geist-mono-latin.woff2') }}" as="font" type="font/woff2" crossorigin>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -134,29 +133,35 @@
                     <kbd class="search-hint">/</kbd>
                     <p class="result-count" role="status" aria-live="polite">
                         <b x-text="shown">{{ $total }}</b><span class="count-of"> of {{ $total }}</span>
-                        <span> talks</span>
+                        <span x-text="shown === 1 ? ' talk' : ' talks'"> talks</span>
                     </p>
                 </div>
 
-                <div class="chips" aria-label="Conference filters">
-                    <button type="button" class="chip" @click="conference = 'all'"
-                            :aria-pressed="conference === 'all' ? 'true' : 'false'" aria-pressed="true">
-                        All <span x-text="conferenceCounts.all ?? {{ $total }}">{{ $total }}</span>
-                    </button>
-                    @foreach ($conferences as $conference)
-                        <button type="button" class="chip" @click="setConference('{{ $conference['slug'] }}')"
-                                :aria-pressed="conference === '{{ $conference['slug'] }}' ? 'true' : 'false'"
-                                aria-pressed="false">
-                            <span class="sr-only">Laracon </span>{{ $conference['short'] }} <span x-text="conferenceCounts['{{ $conference['slug'] }}'] ?? 0">{{ $conference['count'] }}</span>
+                <div class="filter-row">
+                    <div class="chip-strip">
+                        <div class="chips" role="group" aria-label="Conference filters" @focusin="revealChip($event.target.closest('.chip'))">
+                            <button type="button" class="chip" @click="conference = 'all'"
+                                    :aria-pressed="conference === 'all' ? 'true' : 'false'" aria-pressed="true">
+                                All <span x-text="conferenceCounts.all ?? {{ $total }}">{{ $total }}</span>
+                            </button>
+                            @foreach ($conferences as $conference)
+                                <button type="button" class="chip" @click="setConference('{{ $conference['slug'] }}')"
+                                        :aria-pressed="conference === '{{ $conference['slug'] }}' ? 'true' : 'false'"
+                                        :disabled="(conferenceCounts['{{ $conference['slug'] }}'] ?? 0) === 0 && conference !== '{{ $conference['slug'] }}'"
+                                        :title="(conferenceCounts['{{ $conference['slug'] }}'] ?? 0) === 0 ? 'No matches for the current search and year' : 'Filter by Laracon {{ $conference['short'] }}'"
+                                        aria-pressed="false">
+                                    <span class="sr-only">Laracon </span>{{ $conference['short'] }} <span x-text="conferenceCounts['{{ $conference['slug'] }}'] ?? 0">{{ $conference['count'] }}</span>
+                                </button>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="active-filters" x-show="filtered" x-cloak>
+                        <button type="button" class="chip-year" x-show="year !== null" @click="year = null"
+                                :aria-label="'Remove year filter ' + year"><span x-text="year"></span> ×</button>
+                        <button type="button" class="chip-clear" x-show="filtered" x-cloak @click="clear()" aria-label="Clear all filters">
+                            <span class="clear-long">Clear all filters</span><span class="clear-short">Reset</span>
                         </button>
-                    @endforeach
-                </div>
-                <div class="active-filters" x-show="filtered" x-cloak>
-                    <button type="button" class="chip-year" x-show="year !== null" @click="year = null"
-                            :aria-label="'Remove year filter ' + year"><span x-text="year"></span> ×</button>
-                    <button type="button" class="chip-clear" x-show="filtered" x-cloak @click="clear()">
-                        Clear all filters
-                    </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -190,7 +195,7 @@
                         <td class="cell-summary">{{ $talk['summary'] }}</td>
                         <td class="cell-watch">
                             <a class="watch" href="{{ $talk['youtube_url'] }}" target="_blank" rel="noopener noreferrer"
-                               aria-label="Watch “{{ $talk['title'] }}” on YouTube (opens in a new tab)">
+                               tabindex="-1" aria-hidden="true">
                                 Watch
                                 <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
                                     <path d="M2.5 7.5 7.5 2.5M3.6 2.5h3.9v3.9" stroke-linecap="round" stroke-linejoin="round"/>
@@ -203,7 +208,7 @@
         </table>
 
         <div class="empty" x-show="shown === 0" x-cloak>
-            <h2>No talks match these filters.</h2>
+            <h2 x-text="query !== '' ? 'No talks match “' + query + '”.' : 'No talks match these filters.'">No talks match these filters.</h2>
             <p x-show="query !== ''">No matches for “<span x-text="query"></span>”. Try a speaker’s surname or a topic such as Eloquent.</p>
             <p x-show="query === ''">This conference and year have no recorded talks together. Choose another year or conference.</p>
             <button type="button" @click="clear()">Clear all filters</button>
@@ -219,6 +224,10 @@
             </p>
             <p>
                 An independent archive. Not affiliated with Laravel or any Laracon organiser.
+            </p>
+            <p>
+                No analytics. Your theme stays in this browser; searches appear in shareable URLs.
+                Opening a video takes you to YouTube.
             </p>
             <p>
                 Made with love by <a href="https://x.com/pjsantillan" rel="me noopener" target="_blank">Prince John</a>

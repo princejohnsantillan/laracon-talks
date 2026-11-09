@@ -980,7 +980,7 @@
     "conference": "Laracon EU",
     "title": "Improve your developer's toolset",
     "speaker": "Paweł Lewtak",
-    "summary": "The speaker, Pamela Stack from GOG.com, presents various command line tools and productivity enhancements for developers. She discusses terminal multiplexers like Tmux, shell improvements with Zsh and Oh-My-Zsh, and PhpStorm IDE features. The talk focuses on improving developer workflow through better tooling and keyboard-driven development.",
+    "summary": "Paweł Lewtak presents command line tools and productivity improvements for developers, including Tmux, Zsh, Oh-My-Zsh, dotfiles, and PhpStorm features. The talk focuses on improving developer workflow through better tooling and keyboard-driven development.",
     "youtube_url": "https://www.youtube.com/watch?v=TajEHYYdXMo"
   },
   {

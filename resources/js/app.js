@@ -26,12 +26,16 @@ Alpine.data('archive', (total) => ({
     init() {
         // The row's own text is the search index — year, conference, title,
         // speaker and summary are all already on screen.
-        this.rows = Array.from(this.$root.querySelectorAll('tbody tr')).map((el) => ({
-            el,
-            haystack: searchable(el.textContent).replace(/\s+/g, ' '),
-            conference: el.dataset.conference,
-            year: el.dataset.year,
-        }));
+        this.rows = Array.from(this.$root.querySelectorAll('tbody tr')).map((el) => {
+            const haystack = searchable(el.textContent).replace(/\s+/g, ' ');
+            return {
+                el,
+                haystack,
+                words: new Set(haystack.match(/[\p{L}\p{N}]+/gu)),
+                conference: el.dataset.conference,
+                year: el.dataset.year,
+            };
+        });
 
         this.tickRows = Array.from(this.$root.querySelectorAll('[data-tick-year]')).map((el) => ({
             el,
@@ -75,6 +79,13 @@ Alpine.data('archive', (total) => ({
         this.conference = this.conference === slug ? 'all' : slug;
     },
 
+    revealChip(chip) {
+        if (!chip) return;
+        const strip = chip.parentElement;
+        // Horizontal only: restoring filters must not move the page vertically.
+        strip.scrollLeft = chip.offsetLeft - (strip.clientWidth - chip.offsetWidth) / 2;
+    },
+
     toggleYear(year) {
         this.year = this.year === year ? null : year;
         if (matchMedia('(max-width: 1023px)').matches) {
@@ -112,7 +123,12 @@ Alpine.data('archive', (total) => ({
         let shown = 0;
 
         for (const row of this.rows) {
-            const matchesQuery = terms.every((term) => row.haystack.includes(term));
+            const matchesQuery = terms.every((term) => {
+                // Short topics such as AI must not match words like "maintain".
+                if (term.length <= 2) return row.words.has(term);
+                return row.haystack.includes(term) ||
+                    (term.endsWith('s') && !term.endsWith('ss') && row.words.has(term.slice(0, -1)));
+            });
             const matchesConference = this.conference === 'all' || row.conference === this.conference;
             const matchesYear = this.year === null || row.year === this.year;
             const match = matchesQuery && matchesConference && matchesYear;
@@ -135,18 +151,19 @@ Alpine.data('archive', (total) => ({
         for (const { el, year, ticks } of this.tickRows) {
             const lit = perYear.get(year) ?? 0;
             el.querySelector('.ledger-count').textContent = lit;
-            el.setAttribute('aria-label', `Filter by ${year} — ${lit} matching talks`);
+            el.setAttribute('aria-label', `Filter by ${year} — ${lit} matching ${lit === 1 ? 'talk' : 'talks'}`);
+            el.disabled = lit === 0 && this.year !== year;
             ticks.forEach((tick, index) => tick.classList.toggle('lit', index < lit));
         }
 
-        if (updateUrl) {
-            const url = new URL(location.href);
-            for (const [key, value] of Object.entries({ q: this.query, conference: this.conference === 'all' ? '' : this.conference, year: this.year })) {
-                if (value) url.searchParams.set(key, value);
-                else url.searchParams.delete(key);
-            }
-            if (url.href !== location.href) history.pushState(null, '', url);
+        const url = new URL(location.href);
+        for (const [key, value] of Object.entries({ q: this.query, conference: this.conference === 'all' ? '' : this.conference, year: this.year })) {
+            if (value) url.searchParams.set(key, value);
+            else url.searchParams.delete(key);
         }
+        // Invalid shared URL facets are removed without adding a history entry.
+        if (url.href !== location.href) history[updateUrl ? 'pushState' : 'replaceState'](null, '', url);
+        this.$nextTick(() => this.revealChip(this.$root.querySelector('.chip[aria-pressed="true"]')));
     },
 }));
 

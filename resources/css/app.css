@@ -3,6 +3,43 @@
 @source '../../storage/framework/views/*.php';
 @source '../views/**/*.blade.php';
 
+/* Original typefaces, served locally; licenses live beside the font files. */
+@font-face {
+    font-family: 'Instrument Sans';
+    font-style: normal;
+    font-weight: 400 600;
+    font-display: swap;
+    src: url('/fonts/instrument-sans-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Instrument Sans';
+    font-style: normal;
+    font-weight: 400 600;
+    font-display: swap;
+    src: url('/fonts/instrument-sans-latin-ext.woff2') format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Geist Mono';
+    font-style: normal;
+    font-weight: 400 500;
+    font-display: swap;
+    src: url('/fonts/geist-mono-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Geist Mono';
+    font-style: normal;
+    font-weight: 400 500;
+    font-display: swap;
+    src: url('/fonts/geist-mono-latin-ext.woff2') format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
@@ -178,9 +215,11 @@
     transition: color 0.15s, border-color 0.15s;
 }
 
-.theme-toggle:hover {
-    color: var(--ink);
-    border-color: var(--brand-hot);
+@media (hover: hover) {
+    .theme-toggle:hover {
+        color: var(--ink);
+        border-color: var(--brand-hot);
+    }
 }
 
 /* Hero -------------------------------------------------------------------- */
@@ -284,7 +323,6 @@
     transition: opacity 0.15s;
 }
 
-.ledger-row:hover .ledger-year,
 .ledger-row[aria-pressed='true'] .ledger-year {
     color: var(--ink);
 }
@@ -349,8 +387,19 @@
     color: var(--faint);
 }
 
-.ledger-row:hover .ledger-count {
-    color: var(--muted);
+@media (hover: hover) {
+    .ledger-row:not(:disabled):hover .ledger-year,
+    .ledger-row:not(:disabled):hover .ledger-count {
+        color: var(--ink);
+    }
+}
+
+.ledger-row:disabled {
+    cursor: not-allowed;
+}
+
+.ledger-row:disabled .ledger-ticks i {
+    background: var(--line-soft);
 }
 
 @media (max-width: 460px) {
@@ -371,7 +420,7 @@
     z-index: 30;
     border-block: 1px solid var(--line);
     background: var(--paper);
-    box-shadow: 0 1px 0 var(--line);
+    box-shadow: 0 2px 6px #00000008;
 }
 
 .controls-inner {
@@ -452,7 +501,7 @@
     border: 1px solid var(--line);
     border-radius: 3px;
     font-family: var(--font-mono);
-    font-size: 0.625rem;
+    font-size: 0.75rem;
     color: var(--faint);
 }
 
@@ -465,7 +514,7 @@
 .result-count {
     flex: none;
     font-family: var(--font-mono);
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     font-variant-numeric: tabular-nums;
@@ -476,6 +525,18 @@
 .result-count b {
     font-weight: 500;
     color: var(--ink);
+}
+
+.filter-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.chip-strip {
+    position: relative;
+    flex: 1;
+    min-width: 0;
 }
 
 .chips {
@@ -511,9 +572,17 @@
     color: var(--faint);
 }
 
-.chip:hover {
-    color: var(--ink);
-    border-color: var(--muted);
+@media (hover: hover) {
+    .chip:not(:disabled):hover {
+        color: var(--ink);
+        border-color: var(--muted);
+    }
+}
+
+.chip:disabled {
+    border-style: dashed;
+    background: var(--raise);
+    cursor: not-allowed;
 }
 
 .chip[aria-pressed='true'] {
@@ -530,9 +599,11 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    flex: none;
 }
 
 .chip-year {
+    min-width: 44px;
     color: var(--brand);
     font-family: var(--font-mono);
     font-size: 0.75rem;
@@ -540,6 +611,7 @@
 }
 
 .chip-clear {
+    min-width: 44px;
     margin-left: auto;
     border: 0;
     background: none;
@@ -552,8 +624,14 @@
     cursor: pointer;
 }
 
-.chip-clear:hover {
-    color: var(--brand);
+.clear-short {
+    display: none;
+}
+
+@media (hover: hover) {
+    .chip-clear:hover {
+        color: var(--brand);
+    }
 }
 
 @media (max-width: 640px) {
@@ -582,7 +660,7 @@
     padding: 0.75rem 1rem 0.6875rem 0;
     border-bottom: 1px solid var(--line);
     font-family: var(--font-mono);
-    font-size: 0.625rem;
+    font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -593,11 +671,6 @@
 .archive-table tbody tr {
     border-bottom: 1px solid var(--line-soft);
     transition: background-color 0.12s;
-}
-
-.archive-table tbody tr:hover {
-    background: var(--raise);
-    box-shadow: inset 2px 0 0 var(--brand-hot);
 }
 
 .archive-table td {
@@ -680,12 +753,10 @@
     transition: transform 0.15s;
 }
 
-.watch:hover {
-    color: var(--brand);
-}
-
-.watch:hover svg {
-    transform: translate(1px, -1px);
+@media (hover: hover) {
+    .watch:hover svg {
+        transform: translate(1px, -1px);
+    }
 }
 
 .row-hidden {
@@ -699,8 +770,10 @@
     text-underline-offset: 3px;
 }
 
-.talk-link:hover {
-    text-decoration-color: var(--brand);
+@media (hover: hover) {
+    .talk-link:hover {
+        text-decoration-color: var(--brand);
+    }
 }
 
 .archive-table tr:focus-within {
@@ -750,11 +823,6 @@
         padding: 1.25rem 0;
     }
 
-    .archive-table tbody tr:hover {
-        background: none;
-        box-shadow: none;
-    }
-
     .archive-table td {
         padding: 0;
     }
@@ -783,7 +851,7 @@
 
     .cell-summary {
         margin-top: 0.5rem;
-        max-width: none;
+        max-width: 60ch;
     }
 
     .cell-watch {
@@ -840,8 +908,21 @@
     .chips {
         flex-wrap: nowrap;
         overflow-x: auto;
-        padding: 4px 2px;
+        padding: 5px 6px;
         scrollbar-width: thin;
+    }
+
+    .chip-strip::after {
+        content: '';
+        position: absolute;
+        inset: 0 0 0 auto;
+        width: 1.25rem;
+        background: linear-gradient(to right, transparent, var(--paper));
+        pointer-events: none;
+    }
+
+    .chip-strip:focus-within::after {
+        display: none;
     }
 
     .controls-inner {
@@ -849,13 +930,42 @@
         padding-block: 0.5rem;
     }
 
+    .filter-row,
     .active-filters {
-        min-height: 44px;
+        gap: 0.5rem;
+    }
+
+    .clear-long {
+        display: none;
+    }
+
+    .clear-short {
+        display: inline;
     }
 
     .wordmark {
         font-size: 0.6875rem;
         letter-spacing: 0.12em;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+    .archive-table tbody tr {
+        padding-inline: 1rem;
+    }
+
+    .archive-table .cell-year {
+        display: inline-block;
+        position: static;
+        margin-right: 0.75rem;
+    }
+
+    .archive-table .cell-conf {
+        display: inline-block;
+    }
+
+    .cell-title {
+        padding-right: 0;
     }
 }
 
@@ -885,6 +995,7 @@
 }
 
 .empty button {
+    min-height: 44px;
     margin-top: 1.25rem;
     padding: 0.5rem 0.9375rem;
     border: 1px solid var(--brand-hot);
@@ -898,9 +1009,11 @@
     cursor: pointer;
 }
 
-.empty button:hover {
-    background: var(--brand-hot);
-    color: #fff;
+@media (hover: hover) {
+    .empty button:hover {
+        background: #c52a18;
+        color: #fff;
+    }
 }
 
 /* Footer ------------------------------------------------------------------ */
@@ -922,9 +1035,11 @@
     border-bottom: 1px solid var(--line);
 }
 
-.site-footer a:hover {
-    color: var(--brand);
-    border-color: var(--brand);
+@media (hover: hover) {
+    .site-footer a:hover {
+        color: var(--brand);
+        border-color: var(--brand);
+    }
 }
 
 .sr-only {
