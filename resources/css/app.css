@@ -624,6 +624,14 @@
     flex: none;
 }
 
+.chip-year,
+.chip-clear {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+}
+
 .chip-year {
     min-width: 44px;
     padding-inline: 0.5rem;
@@ -638,9 +646,10 @@
 .chip-clear {
     min-width: 44px;
     margin-left: auto;
-    border: 0;
+    border: 1px solid var(--line);
+    border-radius: 999px;
     background: none;
-    padding: 0.3125rem 0;
+    padding: 0.3125rem 0.5rem;
     color: var(--faint);
     font-family: var(--font-mono);
     font-size: 0.6875rem;
@@ -705,6 +714,7 @@
 .archive-table tbody tr {
     border-bottom: 1px solid var(--line-soft);
     transition: background-color 0.12s;
+    scroll-margin-top: calc(var(--controls-h, 125px) + 3.25rem);
 }
 
 .archive-table td {
@@ -802,6 +812,7 @@
     text-decoration: underline;
     text-decoration-color: var(--line);
     text-underline-offset: 3px;
+    scroll-margin-top: calc(var(--controls-h, 125px) + 3.25rem);
 }
 
 @media (hover: hover) {
@@ -855,6 +866,11 @@
     .archive-table tbody tr {
         position: relative;
         padding: 1.25rem 0;
+        scroll-margin-top: calc(var(--controls-h, 125px) + 1rem);
+    }
+
+    .talk-link {
+        scroll-margin-top: calc(var(--controls-h, 125px) + 1rem);
     }
 
     .archive-table td {

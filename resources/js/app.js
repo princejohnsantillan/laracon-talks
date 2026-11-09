@@ -23,6 +23,10 @@ Alpine.data('archive', (total) => ({
     year: null,
     shown: total,
     total,
+    announced: total,
+    settled: true,
+    feedbackTimer: null,
+    searchHistory: false,
     rows: [],
     tickRows: [],
     ledgerOpen: false,
@@ -36,9 +40,13 @@ Alpine.data('archive', (total) => ({
         // speaker and summary are all already on screen.
         this.rows = Array.from(this.$root.querySelectorAll('tbody tr')).map((el) => {
             const words = new Set(wordsIn(el.textContent));
+            const speakers = el.querySelector('.cell-speaker').textContent;
+            const speakerWords = wordsIn(speakers);
+            speakers.split(/\s*(?:,| and | & )\s*/).forEach(name => words.add(wordsIn(name).join('')));
             return {
                 el,
                 words,
+                speakerWords,
                 stems: new Set([...words].map(stemWord)),
                 conference: el.dataset.conference,
                 year: el.dataset.year,
@@ -66,8 +74,13 @@ Alpine.data('archive', (total) => ({
         window.addEventListener('popstate', () => {
             this.readUrl();
             this.apply(false);
+            this.$nextTick(() => this.searchHistory = false);
         });
-        this.$watch('query', () => this.apply());
+        this.$watch('query', () => {
+            // One entry per editing session, not one per debounced keystroke.
+            this.apply(!this.searchHistory);
+            this.searchHistory = true;
+        });
         this.$watch('conference', () => this.apply());
         this.$watch('year', () => this.apply());
     },
@@ -86,7 +99,17 @@ Alpine.data('archive', (total) => ({
     },
 
     setConference(slug) {
+        this.searchHistory = false;
         this.conference = this.conference === slug ? 'all' : slug;
+    },
+
+    revealTalk(event) {
+        if (!event.target.matches('.talk-link:focus-visible')) return;
+        const row = event.target.closest('tr');
+        const clearance = parseFloat(getComputedStyle(row).scrollMarginTop);
+        if (event.target.getBoundingClientRect().top < clearance) {
+            row.scrollIntoView({ block: 'start', behavior: 'instant' });
+        }
     },
 
     revealChip(chip) {
@@ -113,6 +136,7 @@ Alpine.data('archive', (total) => ({
     },
 
     toggleYear(year) {
+        this.searchHistory = false;
         this.year = this.year === year ? null : year;
         if (matchMedia('(max-width: 1023px)').matches) {
             this.ledgerOpen = false;
@@ -125,6 +149,7 @@ Alpine.data('archive', (total) => ({
     },
 
     clear() {
+        this.searchHistory = false;
         this.query = '';
         this.conference = 'all';
         this.year = null;
@@ -149,19 +174,25 @@ Alpine.data('archive', (total) => ({
         const perYear = new Map();
         const perConference = { all: 0 };
         let shown = 0;
+        let resultsChanged = false;
 
         for (const row of this.rows) {
             const matchesQuery = terms.every(({ raw, stem }) => {
                 // Short topics such as AI must not match words like "maintain".
-                if (raw.length <= 2) return row.words.has(raw);
-                // Whole stems prevent api → rapid and test → latest false positives.
-                // Complete longer word roots only, keeping inflections symmetric.
-                return row.stems.has(stem) || (raw.length >= 4 && stem.length >= 4 &&
+                if (raw.length <= 2) return row.words.has(raw) || (raw.length === 2 &&
+                    row.speakerWords.some(word => word.startsWith(raw)));
+                // Complete raw words too: "eloquen" is longer than Eloquent's stem.
+                // Match only word beginnings, never internal substrings.
+                return row.stems.has(stem) || [...row.words].some(word => word.startsWith(raw)) ||
+                    (stem.endsWith('e') && row.words.has(`${stem.slice(0, -1)}ing`)) ||
+                    (raw.length >= 4 && stem.length >= 4 &&
                     [...row.stems].some(word => word.startsWith(stem)));
             });
             const matchesConference = this.conference === 'all' || row.conference === this.conference;
             const matchesYear = this.year === null || row.year === this.year;
             const match = matchesQuery && matchesConference && matchesYear;
+            const wasShown = !row.el.classList.contains('row-hidden');
+            if (match !== wasShown) resultsChanged = true;
             row.el.classList.toggle('row-hidden', !match);
             if (match) shown++;
 
@@ -177,6 +208,12 @@ Alpine.data('archive', (total) => ({
 
         this.shown = shown;
         this.conferenceCounts = perConference;
+        this.settled = false;
+        clearTimeout(this.feedbackTimer);
+        this.feedbackTimer = setTimeout(() => {
+            this.announced = this.shown;
+            this.settled = true;
+        }, 400);
 
         for (const { el, year, ticks } of this.tickRows) {
             const lit = perYear.get(year) ?? 0;
@@ -196,7 +233,14 @@ Alpine.data('archive', (total) => ({
         }
         // Invalid shared URL facets are removed without adding a history entry.
         if (url.href !== location.href) history[updateUrl ? 'pushState' : 'replaceState'](null, '', url);
-        this.$nextTick(() => this.revealChip(this.$root.querySelector('.chip[aria-pressed="true"]')));
+        this.$nextTick(() => {
+            this.revealChip(this.$root.querySelector('.chip[aria-pressed="true"]'));
+            if (resultsChanged || shown === 0) {
+                const top = this.$root.querySelector('#talks').getBoundingClientRect().top;
+                const bottom = this.$root.querySelector('.controls').getBoundingClientRect().bottom;
+                if (top < bottom) window.scrollTo({ top: scrollY + top - bottom, behavior: 'instant' });
+            }
+        });
     },
 }));
 

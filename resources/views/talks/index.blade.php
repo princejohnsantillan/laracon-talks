@@ -67,7 +67,7 @@
                 <p class="hero-lede">
                     <span class="hero-history">Since the inaugural Laracon in Washington, DC in 2013, this community has documented
                     itself out loud — on stage and on video. </span>Here are all <strong>{{ $total }}</strong> recorded talks, from Laracon US, EU,
-                    Online, AU and India. Try a speaker’s surname, Livewire, or a year.
+                    Online, AU and India. Try a surname, Livewire, or a year — word beginnings work too.
                 </p>
 
                 <p class="hero-facts">
@@ -130,16 +130,18 @@
                         <label for="talk-search" class="sr-only">Search the Laracon archive by year, conference, title, speaker or summary</label>
                         <input id="talk-search" type="search" x-ref="search" x-model.debounce.100ms="query"
                                autocomplete="off" spellcheck="false"
-                               aria-keyshortcuts="/" @keydown.escape.prevent="query = ''; $el.value = ''"
+                               @focus="searchHistory = false" @keydown.enter.prevent="searchHistory = false"
+                               aria-keyshortcuts="/" @keydown.escape.prevent="searchHistory = false; query = ''; $el.value = ''"
                                placeholder="Search {{ $total }} talks">
                         <button type="button" class="search-clear" x-show="query !== ''" x-cloak
-                                @click="query = ''; $refs.search.focus()" aria-label="Clear search">×</button>
+                                @click="searchHistory = false; query = ''; $refs.search.focus()" aria-label="Clear search">×</button>
                     </div>
                     <kbd class="search-hint">/</kbd>
-                    <p class="result-count" role="status" aria-live="polite">
+                    <p class="result-count">
                         <b x-text="shown">{{ $total }}</b><span class="count-of"> of {{ $total }} talks</span>
                         <span class="count-unit" x-text="shown === 1 ? ' talk' : ' talks'"> talks</span>
                     </p>
+                    <p class="sr-only" role="status" aria-live="polite" x-text="announced + ' of ' + total + ' talks'">{{ $total }} of {{ $total }} talks</p>
                 </div>
 
                 <div class="filter-row">
@@ -186,7 +188,7 @@
                     <th scope="col" class="cell-watch"><span class="sr-only">Video</span></th>
                 </tr>
             </thead>
-            <tbody role="rowgroup">
+            <tbody role="rowgroup" @focusin="revealTalk($event)">
                 @foreach ($talks as $talk)
                     <tr role="row" data-conference="{{ $talk['slug'] }}"
                         data-year="{{ $talk['year'] }}">
@@ -212,7 +214,7 @@
             </tbody>
         </table>
 
-        <div class="empty" x-show="shown === 0" x-cloak>
+        <div class="empty" x-show="shown === 0 && settled" x-cloak>
             <h2 x-text="query !== '' ? 'No talks match “' + query + '”.' : 'No talks match these filters.'">No talks match these filters.</h2>
             <p x-show="query !== ''">Try a speaker’s surname or a topic such as Eloquent.</p>
             <p x-show="query === ''">This conference and year have no recorded talks together. Choose another year or conference.</p>
