@@ -6,7 +6,15 @@ it('renders the whole archive on the homepage', function () {
     $response->assertOk()
         ->assertSee('The Laracon Archive')
         ->assertSee('Fourteen years of Laracon', false)
-        ->assertSee('id="talk-search"', false);
+        ->assertSee('id="talk-search"', false)
+        ->assertSeeInOrder([
+            'href="#talk-search"',
+            '<main ',
+            'id="talk-search"',
+            '<table ',
+            '</table>',
+            '</main>',
+        ], false);
 
     expect(substr_count($response->getContent(), 'data-conference='))->toBe(626);
 });

@@ -2,6 +2,9 @@ import Alpine from 'alpinejs';
 
 window.Alpine = Alpine;
 
+const searchable = (value) => value.toLowerCase().normalize('NFKD')
+    .replace(/\p{Diacritic}/gu, '').replace(/ł/g, 'l').replace(/ø/g, 'o').replace(/ß/g, 'ss');
+
 /**
  * The archive filter.
  *
@@ -17,18 +20,21 @@ Alpine.data('archive', (total) => ({
     total,
     rows: [],
     tickRows: [],
+    ledgerOpen: false,
+    conferenceCounts: {},
 
     init() {
         // The row's own text is the search index — year, conference, title,
         // speaker and summary are all already on screen.
         this.rows = Array.from(this.$root.querySelectorAll('tbody tr')).map((el) => ({
             el,
-            haystack: el.textContent.toLowerCase().replace(/\s+/g, ' '),
+            haystack: searchable(el.textContent).replace(/\s+/g, ' '),
             conference: el.dataset.conference,
             year: el.dataset.year,
         }));
 
         this.tickRows = Array.from(this.$root.querySelectorAll('[data-tick-year]')).map((el) => ({
+            el,
             year: el.dataset.tickYear,
             ticks: Array.from(el.querySelectorAll('i')),
         }));
@@ -42,9 +48,23 @@ Alpine.data('archive', (total) => ({
         measure();
         new ResizeObserver(measure).observe(controls);
 
+        this.readUrl();
+        this.apply(false);
+        window.addEventListener('popstate', () => {
+            this.readUrl();
+            this.apply(false);
+        });
         this.$watch('query', () => this.apply());
         this.$watch('conference', () => this.apply());
         this.$watch('year', () => this.apply());
+    },
+
+    readUrl() {
+        const params = new URLSearchParams(location.search);
+        this.query = params.get('q') ?? '';
+        this.conference = this.rows.some(row => row.conference === params.get('conference'))
+            ? params.get('conference') : 'all';
+        this.year = this.rows.some(row => row.year === params.get('year')) ? params.get('year') : null;
     },
 
     get filtered() {
@@ -57,6 +77,14 @@ Alpine.data('archive', (total) => ({
 
     toggleYear(year) {
         this.year = this.year === year ? null : year;
+        if (matchMedia('(max-width: 1023px)').matches) {
+            this.ledgerOpen = false;
+            this.$nextTick(() => {
+                const controls = document.querySelector('.controls');
+                controls.focus({ preventScroll: true });
+                controls.scrollIntoView({ block: 'start', behavior: 'instant' });
+            });
+        }
     },
 
     clear() {
@@ -68,9 +96,8 @@ Alpine.data('archive', (total) => ({
 
     /** Focus search on "/" the way a code search would. */
     focusSearch(event) {
-        const tag = document.activeElement?.tagName;
-
-        if (tag === 'INPUT' || tag === 'TEXTAREA') {
+        if (document.activeElement?.matches('input, textarea, select, [contenteditable]') ||
+            event.ctrlKey || event.metaKey || event.altKey) {
             return;
         }
 
@@ -78,31 +105,47 @@ Alpine.data('archive', (total) => ({
         this.$refs.search.focus();
     },
 
-    apply() {
-        const terms = this.query.toLowerCase().split(/\s+/).filter(Boolean);
+    apply(updateUrl = true) {
+        const terms = searchable(this.query).split(/\s+/).filter(Boolean);
         const perYear = new Map();
+        const perConference = { all: 0 };
         let shown = 0;
 
         for (const row of this.rows) {
-            const match =
-                (this.conference === 'all' || row.conference === this.conference) &&
-                (this.year === null || row.year === this.year) &&
-                terms.every((term) => row.haystack.includes(term));
-
+            const matchesQuery = terms.every((term) => row.haystack.includes(term));
+            const matchesConference = this.conference === 'all' || row.conference === this.conference;
+            const matchesYear = this.year === null || row.year === this.year;
+            const match = matchesQuery && matchesConference && matchesYear;
             row.el.classList.toggle('row-hidden', !match);
+            if (match) shown++;
 
-            if (match) {
-                shown++;
+            // Facet counts show what choosing that year/conference would return.
+            if (matchesQuery && matchesConference) {
                 perYear.set(row.year, (perYear.get(row.year) ?? 0) + 1);
+            }
+            if (matchesQuery && matchesYear) {
+                perConference.all++;
+                perConference[row.conference] = (perConference[row.conference] ?? 0) + 1;
             }
         }
 
         this.shown = shown;
+        this.conferenceCounts = perConference;
 
-        for (const { year, ticks } of this.tickRows) {
+        for (const { el, year, ticks } of this.tickRows) {
             const lit = perYear.get(year) ?? 0;
-
+            el.querySelector('.ledger-count').textContent = lit;
+            el.setAttribute('aria-label', `Filter by ${year} — ${lit} matching talks`);
             ticks.forEach((tick, index) => tick.classList.toggle('lit', index < lit));
+        }
+
+        if (updateUrl) {
+            const url = new URL(location.href);
+            for (const [key, value] of Object.entries({ q: this.query, conference: this.conference === 'all' ? '' : this.conference, year: this.year })) {
+                if (value) url.searchParams.set(key, value);
+                else url.searchParams.delete(key);
+            }
+            if (url.href !== location.href) history.pushState(null, '', url);
         }
     },
 }));
@@ -114,10 +157,21 @@ Alpine.data('archive', (total) => ({
 Alpine.data('theme', () => ({
     dark: document.documentElement.classList.contains('dark'),
 
+    init() {
+        matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            let saved;
+            try { saved = localStorage.getItem('theme'); } catch {}
+            if (!saved) {
+                this.dark = event.matches;
+                document.documentElement.classList.toggle('dark', this.dark);
+            }
+        });
+    },
+
     toggle() {
         this.dark = !this.dark;
         document.documentElement.classList.toggle('dark', this.dark);
-        localStorage.setItem('theme', this.dark ? 'dark' : 'light');
+        try { localStorage.setItem('theme', this.dark ? 'dark' : 'light'); } catch {}
     },
 }));
 

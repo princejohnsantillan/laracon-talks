@@ -10,19 +10,20 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="The Laracon Archive — {{ $total }} talks, 2013–2026">
     <meta property="og:description" content="Every recorded Laracon talk from 2013 to 2026: {{ $total }} talks across Laracon US, EU, Online, AU and India.">
-    <meta property="og:image" content="{{ url('/og.png') }}">
+    <meta property="og:image" content="{{ asset('og.png') }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="The Laracon Archive — fourteen years of Laracon, kept in one record.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Laracon Archive — {{ $total }} talks, 2013–2026">
     <meta name="twitter:description" content="Every recorded Laracon talk from 2013 to 2026 across Laracon US, EU, Online, AU and India.">
-    <meta name="twitter:image" content="{{ url('/og.png') }}">
+    <meta name="twitter:image" content="{{ asset('og.png') }}">
 
     <script>
         // Set the theme before first paint so the page never flashes.
         (() => {
-            const saved = localStorage.getItem('theme');
+            let saved;
+            try { saved = localStorage.getItem('theme'); } catch {}
             const dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
             document.documentElement.classList.toggle('dark', dark);
         })();
@@ -35,6 +36,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
+<a class="skip-link" href="#talk-search">Skip to search and talks</a>
 <div x-data="archive({{ $total }})" @keydown.window.slash="focusSearch($event)">
 
     <header class="shell">
@@ -56,17 +58,16 @@
 
     <div class="rule-brand" role="presentation"></div>
 
-    <main class="shell">
-        <section class="hero">
+    <main id="main-content">
+        <section class="shell hero">
             <div>
                 <p class="eyebrow">A record of the Laravel community, in talks</p>
 
                 <h1>Fourteen years of Laracon, kept in <em>one record</em>.</h1>
 
                 <p class="hero-lede">
-                    Since the inaugural Laracon in Washington, DC in 2013, this community has documented
-                    itself out loud — on stage, on video, once or twice a year, on five continents' worth of
-                    stages. Here are all <strong>{{ $total }}</strong> recorded talks, from Laracon US, EU,
+                    <span class="hero-history">Since the inaugural Laracon in Washington, DC in 2013, this community has documented
+                    itself out loud — on stage and on video. </span>Here are all <strong>{{ $total }}</strong> recorded talks, from Laracon US, EU,
                     Online, AU and India. Search it the way you'd search a codebase.
                 </p>
 
@@ -80,10 +81,17 @@
 
             {{-- The ledger: one tick mark per talk. Lit marks match the current search. --}}
             <div class="ledger">
+                <button type="button" class="ledger-toggle" @click="ledgerOpen = !ledgerOpen"
+                        :aria-expanded="ledgerOpen" aria-expanded="false" aria-controls="year-options">
+                    Browse by year <span x-text="year ?? '2013–2026'"></span>
+                    <span aria-hidden="true" x-text="ledgerOpen ? '−' : '+'">+</span>
+                </button>
+                <div id="year-options" class="ledger-content mobile-collapsed" :class="{ 'mobile-collapsed': !ledgerOpen }">
                 <div class="ledger-head">
                     <p class="eyebrow">One mark per talk</p>
                     <p class="eyebrow">Pick a year to filter</p>
                 </div>
+                <p class="ledger-help">Matching search and conference, before choosing a year.</p>
 
                 <div class="ledger-rows">
                     @foreach ($years as $y)
@@ -102,11 +110,11 @@
                         </button>
                     @endforeach
                 </div>
+                </div>
             </div>
         </section>
-    </main>
 
-    <div class="controls">
+    <search class="controls" aria-label="Find talks" tabindex="-1">
         <div class="shell">
             <div class="controls-inner">
                 <div class="search-row">
@@ -116,43 +124,49 @@
                             <path d="M10.5 10.5 14 14" stroke-linecap="round"/>
                         </svg>
                         <label for="talk-search" class="sr-only">Search the Laracon archive by year, conference, title, speaker or summary</label>
-                        <input id="talk-search" type="search" x-ref="search" x-model="query"
+                        <input id="talk-search" type="search" x-ref="search" x-model.debounce.200ms="query"
                                autocomplete="off" spellcheck="false"
-                               placeholder="Search {{ $total }} talks — try “queues”, “Eloquent”, “Otwell”">
+                               aria-keyshortcuts="/" @keydown.escape.prevent="query = ''; $el.value = ''"
+                               placeholder="Search {{ $total }} talks">
+                        <button type="button" class="search-clear" x-show="query !== ''" x-cloak
+                                @click="query = ''; $refs.search.focus()" aria-label="Clear search">×</button>
                     </div>
                     <kbd class="search-hint">/</kbd>
                     <p class="result-count" role="status" aria-live="polite">
                         <b x-text="shown">{{ $total }}</b><span class="count-of"> of {{ $total }}</span>
-                        <span class="sr-only">talks shown</span>
+                        <span> talks</span>
                     </p>
                 </div>
 
-                <div class="chips">
+                <div class="chips" aria-label="Conference filters">
                     <button type="button" class="chip" @click="conference = 'all'"
                             :aria-pressed="conference === 'all' ? 'true' : 'false'" aria-pressed="true">
-                        All <span>{{ $total }}</span>
+                        All <span x-text="conferenceCounts.all ?? {{ $total }}">{{ $total }}</span>
                     </button>
                     @foreach ($conferences as $conference)
                         <button type="button" class="chip" @click="setConference('{{ $conference['slug'] }}')"
                                 :aria-pressed="conference === '{{ $conference['slug'] }}' ? 'true' : 'false'"
                                 aria-pressed="false">
-                            <span class="sr-only">Laracon </span>{{ $conference['short'] }} <span>{{ $conference['count'] }}</span>
+                            <span class="sr-only">Laracon </span>{{ $conference['short'] }} <span x-text="conferenceCounts['{{ $conference['slug'] }}'] ?? 0">{{ $conference['count'] }}</span>
                         </button>
                     @endforeach
-
+                </div>
+                <div class="active-filters" x-show="filtered" x-cloak>
+                    <button type="button" class="chip-year" x-show="year !== null" @click="year = null"
+                            :aria-label="'Remove year filter ' + year"><span x-text="year"></span> ×</button>
                     <button type="button" class="chip-clear" x-show="filtered" x-cloak @click="clear()">
-                        Clear filters
-                        <span x-show="year !== null" x-cloak>· <span x-text="year"></span></span>
+                        Clear all filters
                     </button>
                 </div>
             </div>
         </div>
-    </div>
+    </search>
 
-    <div class="shell">
-        <table class="archive-table" x-show="shown > 0">
+    <div class="shell" id="talks">
+        <noscript><p class="no-script">Search and filters need JavaScript. All {{ $total }} talks are listed below; you can use your browser’s Find in page.</p></noscript>
+        <table class="archive-table" x-show="shown > 0" role="table">
             <caption class="sr-only">All {{ $total }} recorded Laracon talks, newest year first.</caption>
-            <thead>
+            <thead role="rowgroup">
                 <tr>
                     <th scope="col" class="cell-year">Year</th>
                     <th scope="col" class="cell-conf">Conference</th>
@@ -162,15 +176,16 @@
                     <th scope="col" class="cell-watch"><span class="sr-only">Video</span></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody role="rowgroup">
                 @foreach ($talks as $talk)
-                    <tr data-conference="{{ $talk['slug'] }}"
+                    <tr role="row" data-conference="{{ $talk['slug'] }}"
                         data-year="{{ $talk['year'] }}">
                         <td class="cell-year mono">{{ $talk['year'] }}</td>
                         <td class="cell-conf">
                             <span class="conf-tag"><span class="sr-only">Laracon </span>{{ $talk['short'] }}</span>
                         </td>
-                        <td class="cell-title">{{ $talk['title'] }}</td>
+                        <td class="cell-title"><a class="talk-link" href="{{ $talk['youtube_url'] }}" target="_blank" rel="noopener noreferrer"
+                            aria-label="Watch “{{ $talk['title'] }}” on YouTube (opens in a new tab)">{{ $talk['title'] }}</a></td>
                         <td class="cell-speaker">{{ $talk['speaker'] }}</td>
                         <td class="cell-summary">{{ $talk['summary'] }}</td>
                         <td class="cell-watch">
@@ -188,14 +203,13 @@
         </table>
 
         <div class="empty" x-show="shown === 0" x-cloak>
-            <h2>No talks match that.</h2>
-            <p>
-                The archive covers {{ $years->count() }} years and {{ $conferences->count() }} conferences, so
-                try a broader term — a speaker's surname, a package name, or a single year.
-            </p>
-            <button type="button" @click="clear()">Clear filters</button>
+            <h2>No talks match these filters.</h2>
+            <p x-show="query !== ''">No matches for “<span x-text="query"></span>”. Try a speaker’s surname or a topic such as Eloquent.</p>
+            <p x-show="query === ''">This conference and year have no recorded talks together. Choose another year or conference.</p>
+            <button type="button" @click="clear()">Clear all filters</button>
         </div>
     </div>
+    </main>
 
     <footer class="shell">
         <div class="site-footer">
