@@ -980,7 +980,7 @@
     "conference": "Laracon EU",
     "title": "Improve your developer's toolset",
     "speaker": "Paweł Lewtak",
-    "summary": "The speaker, Pamela Stack from GOG.com, presents various command line tools and productivity enhancements for developers. She discusses terminal multiplexers like Tmux, shell improvements with Zsh and Oh-My-Zsh, and PhpStorm IDE features. The talk focuses on improving developer workflow through better tooling and keyboard-driven development.",
+    "summary": "Paweł Lewtak presents command line tools and productivity improvements for developers, including Tmux, Zsh, Oh-My-Zsh, dotfiles, and PhpStorm features. The talk focuses on improving developer workflow through better tooling and keyboard-driven development.",
     "youtube_url": "https://www.youtube.com/watch?v=TajEHYYdXMo"
   },
   {
@@ -2178,8 +2178,8 @@
   {
     "year": 2020,
     "conference": "Laracon EU",
-    "title": "Nuno Maduro",
-    "speaker": "Introducing Pest",
+    "title": "Introducing Pest",
+    "speaker": "Nuno Maduro",
     "summary": "Nuno presents Pest, an elegant PHP testing framework built on top of PHPUnit. The talk demonstrates how Pest simplifies testing syntax, reduces boilerplate code, and provides a more user-friendly experience through features like higher-order tests, datasets, and improved test coverage reporting. The framework maintains compatibility with existing PHPUnit tests while offering a more modern and concise testing API.",
     "youtube_url": "https://www.youtube.com/watch?v=lEvau6CgqPE"
   },
@@ -3140,7 +3140,7 @@
     "conference": "Laracon US",
     "title": "Enjoying Laravel Data",
     "speaker": "Freek Van der Herten",
-    "summary": "In this captivating session, Freek Van der Herten takes the stage to share his expertise on effectively managing data within Laravel applications using the Spatie package Laravel-Data. (https://spatie.be/docs/laravel-data/v3/introduction) As a prominent Laravel developer, Van der Herten reveals practical tips, techniques, and best practices for handling data in a way that enhances the development experience and maximizes the application's potential.",
+    "summary": "In this captivating session, Freek Van der Herten takes the stage to share his expertise on effectively managing data within Laravel applications using the Spatie package Laravel-Data. As a prominent Laravel developer, Van der Herten reveals practical tips, techniques, and best practices for handling data in a way that enhances the development experience and maximizes the application's potential.",
     "youtube_url": "https://www.youtube.com/watch?v=CrO_7Df1cBc"
   },
   {
@@ -3492,7 +3492,7 @@
     "conference": "Laracon US",
     "title": "Laravel and AI",
     "speaker": "Colin DeCarlo",
-    "summary": "Colin shows us how to unlock vector embeddings, prompting, and more! Colin's hands-on AI-Driven Laravel course - Sign up for course updates https://aidrivenlaravel.com",
+    "summary": "Colin shows us how to unlock vector embeddings, prompting, and more!",
     "youtube_url": "https://www.youtube.com/watch?v=Rd3RTTF8xYI"
   },
   {
@@ -3500,7 +3500,7 @@
     "conference": "Laracon US",
     "title": "Laravel Cloud, Inertia 2.0, VS Code Extension, & OSS Updates",
     "speaker": "Taylor Otwell",
-    "summary": "The founder of Laravel, Taylor Otwell, announced framework updates and 3 major releases at Laracon US 2024 in Dallas, TX. Laravel Cloud, Intertia 2.0, VS Code Extension, & OSS Updates - Taylor Otwell Keynote at Laracon US 2024 Timeline: 00:00 Welcome 01:15 The State of Laravel 06:00 Herd Forge Integration 06:30 New vscode Extension (with Joe Tannenbaum) 18:18 Temp URLs Locally 22:20 Container Attributes 26:50 Eloquent Chaperone 31:37 Defer Tasks 37:50 Flexible Cache 41:10 Concurrency 49:45 Inertia Async…",
+    "summary": "Taylor Otwell presents Laravel framework updates, Laravel Cloud, Inertia 2.0, and the VS Code extension, alongside updates to Herd, Forge, Eloquent, caching, and concurrency.",
     "youtube_url": "https://www.youtube.com/watch?v=AwWepVU5uWM"
   },
   {
@@ -3508,7 +3508,7 @@
     "conference": "Laracon US",
     "title": "Learn to Fly with Laravel Reverb",
     "speaker": "Joe Dixon",
-    "summary": "Joe takes us on a journey through real-time communication with Laravel Reverb, starting with the basics, exploring how Reverb works under the hood, and culminating in an ambitious live demo that takes real-time communication to the next level. Laravel Reverb Site: https://reverb.laravel.com/ Reverb Docs: https://laravel.com/docs/11.x/reverb",
+    "summary": "Joe takes us on a journey through real-time communication with Laravel Reverb, starting with the basics, exploring how Reverb works under the hood, and culminating in an ambitious live demo that takes real-time communication to the next level.",
     "youtube_url": "https://www.youtube.com/watch?v=60g-Z-dAWNk"
   },
   {
@@ -3540,7 +3540,7 @@
     "conference": "Laracon US",
     "title": "Terminal UIs",
     "speaker": "Joe Tannenbaum",
-    "summary": "Joe demonstrates building a text based user interface in the terminal using Laravel Prompts (https://laravel.com/docs/11.x/prompts ), resulting in an interactive speaker directory app in under 30 minutes.",
+    "summary": "Joe demonstrates building a text based user interface in the terminal using Laravel Prompts, resulting in an interactive speaker directory app in under 30 minutes.",
     "youtube_url": "https://www.youtube.com/watch?v=aJu48qlJANM"
   },
   {
@@ -3556,7 +3556,7 @@
     "conference": "Laracon US",
     "title": "Verbs for Laravel",
     "speaker": "Daniel Coulbourne",
-    "summary": "Try Verbs: https://verbs.thunk.dev Daniel is founder of Thunk: https://thunk.dev Twitter: https://twitter.com/dcoulbourne Mastodon: https://rtsn.dev/@coulb",
+    "summary": "",
     "youtube_url": "https://www.youtube.com/watch?v=tX6nBpSvh4s"
   },
   {
@@ -4004,7 +4004,7 @@
     "conference": "Laracon US",
     "title": "Advanced Eloquent Relations",
     "speaker": "Chris Morrell",
-    "summary": "Chris Morrell explains how Eloquent relations in Laravel are just PHP code that can be customized to create unconventional database relationships, including geospatial queries and AI-generated data. Chris Morrell on Bluesky: https://bsky.app/profile/cmorrell.com We featured Chris in one of our \"Artisan of the Day\" posts: https://blog.laravel.com/under-laravel-eloquents-hood-the-artisan-of-the-day-is-chris-morrell",
+    "summary": "Chris Morrell explains how Eloquent relations in Laravel are just PHP code that can be customized to create unconventional database relationships, including geospatial queries and AI-generated data.",
     "youtube_url": "https://www.youtube.com/watch?v=qLC04_BPQTY"
   },
   {
@@ -4020,7 +4020,7 @@
     "conference": "Laracon US",
     "title": "Benchmarks, Bots, and Best Practices",
     "speaker": "Colin DeCarlo",
-    "summary": "Colin explains how AI models are evaluated, warns against vibe‑coding hype, and shares practical workflows that will help developers use AI as a safe and productive coding partner. Colin DeCarlo is on X: https://x.com/colindecarlo",
+    "summary": "Colin explains how AI models are evaluated, warns against vibe‑coding hype, and shares practical workflows that will help developers use AI as a safe and productive coding partner.",
     "youtube_url": "https://www.youtube.com/watch?v=Xz4QOv5Xe_s"
   },
   {
@@ -4028,7 +4028,7 @@
     "conference": "Laracon US",
     "title": "Building High-Trust Environments",
     "speaker": "John Drexler",
-    "summary": "John Drexler explains how to build a high-trust work environment by establishing shared goals, focusing on mutual problem solving, and practicing effective communication techniques. John Drexler on X: https://x.com/johnrudolphdrex We featured John in one of our \"Artisan of the Day\" posts: https://blog.laravel.com/building-high-trust-the-artisan-of-the-day-is-john-drexler",
+    "summary": "John Drexler explains how to build a high-trust work environment by establishing shared goals, focusing on mutual problem solving, and practicing effective communication techniques.",
     "youtube_url": "https://www.youtube.com/watch?v=Zki4d6sHhy4"
   },
   {
@@ -4044,7 +4044,7 @@
     "conference": "Laracon US",
     "title": "Design That Sticks",
     "speaker": "Leah Thompson",
-    "summary": "Lea Thompson shares a simple formula for turning stripped-back layouts into memorable front-end interfaces and describes her jump from newcomer to shipping complex Laravel marketing sites. Leah Thompson is on X: https://x.com/leahtcodes",
+    "summary": "Lea Thompson shares a simple formula for turning stripped-back layouts into memorable front-end interfaces and describes her jump from newcomer to shipping complex Laravel marketing sites.",
     "youtube_url": "https://www.youtube.com/watch?v=YY5zqSGpkDA"
   },
   {
@@ -4052,7 +4052,7 @@
     "conference": "Laracon US",
     "title": "From Next.js to Laravel",
     "speaker": "Dave Kiss",
-    "summary": "Dave demos a playful 3-second video guestbook - meet Lenny the larva - showing how it records with the MediaRecorder API, uploads and transcodes with Mux, and migrates from Next.js to Laravel using Inertia, server-sent events, and starter kits. Dave Kiss is on X: https://x.com/davekiss",
+    "summary": "Dave demos a playful 3-second video guestbook - meet Lenny the larva - showing how it records with the MediaRecorder API, uploads and transcodes with Mux, and migrates from Next.js to Laravel using Inertia, server-sent events, and starter kits.",
     "youtube_url": "https://www.youtube.com/watch?v=7jlrzQl4LW0"
   },
   {
@@ -4060,7 +4060,7 @@
     "conference": "Laracon US",
     "title": "From Vision to Velocity",
     "speaker": "Tom Crary",
-    "summary": "Tom describes the vision for Laravel Cloud, Forge, and Nightwatch, and outlines early hiring, product choices, and rapid scaling that led to Laravel's success. Tom is on X: https://x.com/tmoney1371",
+    "summary": "Tom describes the vision for Laravel Cloud, Forge, and Nightwatch, and outlines early hiring, product choices, and rapid scaling that led to Laravel's success.",
     "youtube_url": "https://www.youtube.com/watch?v=IkeGWHvFais"
   },
   {
@@ -4068,7 +4068,7 @@
     "conference": "Laracon US",
     "title": "Laracon Keynote 2025",
     "speaker": "Taylor Otwell and the Laravel team",
-    "summary": "Watch the Laravel Keynote from Laracon 2025 featuring major updates: Laravel Boost, Forge with instant VPS provisioning and zero-downtime deployments, Cloud preview environments, Nightwatch updates, new Cloud plans, and many other announcements. Key Timestamps & Major Announcements: 0:00 - Introduction & 2025 Overview 3:17 - Open Source Framework Updates 19:38 - JavaScript/Frontend Improvements 26:15 - Laravel Wayfinder 41:59 - Laravel Boost 1:14:09 - Nightwatch Light Mode 1:18:48 - Laravel Forge Updates…",
+    "summary": "Taylor Otwell and the Laravel team introduce Laravel Boost, Forge instant VPS provisioning and zero-downtime deployments, Cloud preview environments and plans, and Nightwatch updates.",
     "youtube_url": "https://www.youtube.com/watch?v=CJv5Y7im3Ws"
   },
   {
@@ -4076,7 +4076,7 @@
     "conference": "Laracon US",
     "title": "Livewire 4 Revealed",
     "speaker": "Caleb Porzio",
-    "summary": "Caleb Porzio unveils Livewire 4 with unified single-file components, the revolutionary Blaze compiler that speeds up blade rendering by 10x, and Islands architecture for isolating expensive operations. Caleb Porzio is on X: https://x.com/calebporzio",
+    "summary": "Caleb Porzio unveils Livewire 4 with unified single-file components, the revolutionary Blaze compiler that speeds up blade rendering by 10x, and Islands architecture for isolating expensive operations.",
     "youtube_url": "https://www.youtube.com/watch?v=M60-nxlrePc"
   },
   {
@@ -4084,7 +4084,7 @@
     "conference": "Laracon US",
     "title": "Master Git Interactive Rebase",
     "speaker": "Rissa Jackson",
-    "summary": "Rissa Jackson demonstrates the power of Git interactive rebase with live terminal demos, showing how to drop unwanted commits, squash multiple commits together, edit commit messages, and maintain clean Git history. Rissa is on X: https://x.com/rissa_bubbles",
+    "summary": "Rissa Jackson demonstrates the power of Git interactive rebase with live terminal demos, showing how to drop unwanted commits, squash multiple commits together, edit commit messages, and maintain clean Git history.",
     "youtube_url": "https://www.youtube.com/watch?v=i6DsrMGdZW0"
   },
   {
@@ -4092,7 +4092,7 @@
     "conference": "Laracon US",
     "title": "Pest 4: Modern Browser Testing, Sharding, Visual Diffs & more",
     "speaker": "Nuno Maduro",
-    "summary": "Join Nuno Maduro, renowned PHP developer and Laravel core team member, as he introduces Pest 4, a groundbreaking update to the popular PHP testing framework. Nuno on X: https://x.com/enunomaduro 00:00 Introduction 00:52 Pest PHP 02:16 Browser Testing 02:51 Live Coding: Browser Testing Demo 06:41 Advanced Browser Testing Features 10:07 Debugging and Code Coverage 12:56 Smoke Testing Enhancements 18:21 Visual Testing Capabilities 23:07 Pest vs.",
+    "summary": "Join Nuno Maduro, renowned PHP developer and Laravel core team member, as he introduces Pest 4, a groundbreaking update to the popular PHP testing framework.",
     "youtube_url": "https://www.youtube.com/watch?v=f5gAgwwwwOI"
   },
   {
@@ -4100,7 +4100,7 @@
     "conference": "Laracon US",
     "title": "Prism & AI",
     "speaker": "TJ Miller",
-    "summary": "TJ Miller presents Prism, a unified routing layer for AI models that simplifies switching between providers like OpenAI and Anthropic with just one line of code, offering Laravel-like elegance while maintaining provider-specific features. 0:00 Introduction to TJ Miller and Prism 1:48 What is Prism - One API for multiple AI providers 4:02 Text Generation and Streaming Capabilities 5:56 Structured Output with Prism 9:12 Building AI Tools and Agents 13:01 Image Generation Workflow 16:23 Testing Prism and…",
+    "summary": "TJ Miller introduces Prism, a unified API for switching between AI providers such as OpenAI and Anthropic. The talk covers text generation, streaming, structured output, tools and agents, image generation, and testing.",
     "youtube_url": "https://www.youtube.com/watch?v=TsEeIjWrPhI"
   },
   {
@@ -4116,7 +4116,7 @@
     "conference": "Laracon US",
     "title": "Turbocharge Your Laravel Development",
     "speaker": "Alex Six",
-    "summary": "Alex demonstrates how using tmux, a terminal multiplexer, can turbocharge Laravel development workflow by organizing terminal processes into persistent, portable sessions that free developers to focus on creative problem-solving rather than managing multiple terminal windows. Follow Alex Six: https://x.com/alexandersix_",
+    "summary": "Alex demonstrates how using tmux, a terminal multiplexer, can turbocharge Laravel development workflow by organizing terminal processes into persistent, portable sessions that free developers to focus on creative problem-solving rather than managing multiple terminal windows.",
     "youtube_url": "https://www.youtube.com/watch?v=cbn3y_f8eDM"
   },
   {
@@ -4124,7 +4124,7 @@
     "conference": "Laracon US",
     "title": "Vue's Evolution: From Framework to Ecosystem",
     "speaker": "Evan You",
-    "summary": "Evan You, creator of Vue.js and Vite, discusses Vue's growth from 1,800 weekly downloads to 7 million, highlights upcoming features in Vue 3.6 including Vapor mode for extreme performance, and shares how his company VoidZero is building a unified JavaScript toolchain with Rolldown to make Vite significantly faster. Follow Evan You on X: https://x.com/youyuxi",
+    "summary": "Evan You, creator of Vue.js and Vite, discusses Vue's growth from 1,800 weekly downloads to 7 million, highlights upcoming features in Vue 3.6 including Vapor mode for extreme performance, and shares how his company VoidZero is building a unified JavaScript toolchain with Rolldown to make Vite significantly faster.",
     "youtube_url": "https://www.youtube.com/watch?v=GUiyasQxbDw"
   },
   {
@@ -4132,7 +4132,7 @@
     "conference": "Laracon US",
     "title": "Writing Resilient Code",
     "speaker": "Zuzana Kunckova",
-    "summary": "Zuzana delivers a rapid 5‑minute primer on writing resilient web code: validate and sanitize inputs, handle errors gracefully, monitor and log meaningfully, retry and fall back to cached content, and test edge cases so your app keeps working under failure. Zuzana is on X: https://x.com/zuzana_kunckova",
+    "summary": "Zuzana delivers a rapid 5‑minute primer on writing resilient web code: validate and sanitize inputs, handle errors gracefully, monitor and log meaningfully, retry and fall back to cached content, and test edge cases so your app keeps working under failure.",
     "youtube_url": "https://www.youtube.com/watch?v=Emm559sI6tI"
   },
   {
@@ -4148,7 +4148,7 @@
     "conference": "Laracon US",
     "title": "You Should Reinvent The Wheel",
     "speaker": "Thiery Laverdure",
-    "summary": "Thiery Laverdure argues that reinventing the wheel can yield incredible value through innovation, refinement, and learning, as demonstrated by his journey building Litebase, a distributed SQLite database. Thiery Laverdure on Bluesky: https://bsky.app/profile/thierylaverdure.com We featured Thiery in one of our \"Artisan of the Day\" posts: https://blog.laravel.com/you-should-reinvent-the-wheel-the-artisan-of-the-day-is-thiery-laverdure",
+    "summary": "Thiery Laverdure argues that reinventing the wheel can yield incredible value through innovation, refinement, and learning, as demonstrated by his journey building Litebase, a distributed SQLite database.",
     "youtube_url": "https://www.youtube.com/watch?v=E4_QSEfInrc"
   },
   {
@@ -4628,7 +4628,7 @@
     "conference": "Laracon US",
     "title": "Everything New with Laravel and Cloud",
     "speaker": "Taylor Otwell",
-    "summary": "Laravel framework installs are past 350,000 a day, and the number of new Laravel apps created by coding agents is doubling roughly every five weeks. Shipping on the open source side: conditional container bindings through attributes, debounced jobs, a php artisan dev command that packages can register into, refreshable locks, first-party image manipulation, CPX 2.0, Pint for Blade, the new Laravel Head package, Str::summarize(), Inertia Chrome DevTools, an OpenAI-compatible AI SDK provider that unlocks local…",
+    "summary": "Taylor Otwell presents Laravel and Cloud updates, including conditional container bindings, debounced jobs, refreshable locks, image manipulation, Pint for Blade, Laravel Head, Inertia Chrome DevTools, and an OpenAI-compatible AI SDK provider.",
     "youtube_url": "https://www.youtube.com/watch?v=92Xn3NqPGlw"
   },
   {
@@ -4636,7 +4636,7 @@
     "conference": "Laracon US",
     "title": "Filament: Advanced Practical Examples",
     "speaker": "Povilas Korop",
-    "summary": "Filament isn't just an admin panel builder, it's an app builder, and thirteen real demos make the case.Attendance grids of checkboxes, colorful availability tables, GitHub-style contribution heat maps, tables rendered as grids instead of rows Roughly a hundred render hooks let you move the search bar to the other side or drop a user avatar above the sidebar, and a fully custom theme is possible if you're willing to write a lot of CSS to get there. Repeaters handle parent/child forms, while sections, tabs, and…",
+    "summary": "A tour of Filament's app-building capabilities through thirteen demos, including attendance grids, availability tables, contribution heat maps, grid-based tables, render hooks, custom themes, repeaters, and parent/child forms.",
     "youtube_url": "https://www.youtube.com/watch?v=olvqO33PBI0"
   },
   {
@@ -4660,7 +4660,7 @@
     "conference": "Laracon US",
     "title": "Introducing Pest 5",
     "speaker": "Nuno Maduro",
-    "summary": "Nuno Maduro unveils Pest 5 with live demos of six new features: an agent plugin that lets Claude Code arrange a scenario, drive a browser, and make backend assertions in a single tool call; a PHPStan plugin for fully type-safe tests; a Rector plugin that rewrites AI-generated tests into idiomatic Pest; an evals plugin for testing AI agents against reference answers; time-based CI sharding so every shard finishes together; and the TIA engine, which cuts Laravel Cloud's local suite from 200 seconds to 5. Pest 5…",
+    "summary": "Nuno Maduro introduces six Pest 5 testing features: plugins for agents, PHPStan, Rector, and AI evaluations, plus time-based CI sharding and the TIA engine.",
     "youtube_url": "https://www.youtube.com/watch?v=71bMyZcDlM4"
   },
   {
@@ -4684,7 +4684,7 @@
     "conference": "Laracon US",
     "title": "Proven Package Patterns",
     "speaker": "Freek Van der Herten",
-    "summary": "In the age of AI, packages still earn their place for hard problems, external problems, and tasteful solutions, but maybe not for the trivial shared ones an agent can write inline for your project. Keeping a package flexible without drowning in configuration comes down to a handful of patterns: fire events so users can hook in wherever they want instead of adding an option for every hook, let people register their own models and jobs by extending yours, and wrap low-level behavior in action classes they can…",
+    "summary": "Freek Van der Herten discusses why packages still matter in the age of AI, and how to keep them flexible without a growing list of options. Patterns include exposing events, extensible models and jobs, and action classes.",
     "youtube_url": "https://www.youtube.com/watch?v=uZU1F_BWiXU"
   },
   {

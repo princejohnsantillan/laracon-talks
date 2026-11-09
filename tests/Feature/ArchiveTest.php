@@ -6,9 +6,73 @@ it('renders the whole archive on the homepage', function () {
     $response->assertOk()
         ->assertSee('The Laracon Archive')
         ->assertSee('Fourteen years of Laracon', false)
-        ->assertSee('id="talk-search"', false);
+        ->assertSee('id="talk-search"', false)
+        ->assertSee('scope="rowgroup"', false)
+        ->assertSeeInOrder([
+            'href="#talk-search"',
+            '<main ',
+            'id="talk-search"',
+            '<table ',
+            '</table>',
+            '</main>',
+        ], false);
 
     expect(substr_count($response->getContent(), 'data-conference='))->toBe(626);
+});
+
+it('omits placeholder descriptions without omitting their talks', function () {
+    $this->get('/')
+        ->assertOk()
+        ->assertSee('Your First Pull Request')
+        ->assertDontSee('A Laracon EU 2025 conference talk by');
+});
+
+it('uses local lazy posters and keeps unavailable and timestamped talks watchable', function () {
+    $content = $this->get('/')->assertOk()->getContent();
+    $document = new DOMDocument;
+    @$document->loadHTML($content);
+    $xpath = new DOMXPath($document);
+    $links = $xpath->query('//a[@class="talk-link"]');
+
+    expect($links->length)->toBe(626)
+        ->and($xpath->query('//tr[@data-conference]//a')->length)->toBe(626);
+
+    foreach ($xpath->query('//a[@class="talk-link"]//img') as $image) {
+        expect($image->getAttribute('src'))->toStartWith(asset('thumbnails/'))
+            ->and($image->getAttribute('loading'))->toBe('lazy')
+            ->and($image->getAttribute('alt'))->toBe('');
+    }
+
+    $shared = $xpath->query('//a[@class="talk-link" and contains(@href, "cucIWpAenro")]');
+    expect($shared->length)->toBe(4);
+    foreach ($shared as $link) {
+        expect($xpath->query('.//img', $link)->item(0)->getAttribute('src'))
+            ->toBe(asset('thumbnails/cucIWpAenro.webp'));
+    }
+
+    $unavailable = $xpath->query('//a[@class="talk-link" and contains(@href, "0WqSvhQ31MQ")]')->item(0);
+    expect($unavailable->getAttribute('aria-label'))->toBe('Watch “Laravel Pulse: Behind the Scenes” on YouTube (opens in a new tab)')
+        ->and($xpath->query('.//img', $unavailable)->length)->toBe(0);
+});
+
+it('links icons and share images that exist', function () {
+    $document = new DOMDocument;
+    @$document->loadHTML($this->get('/')->assertOk()->getContent());
+    $xpath = new DOMXPath($document);
+
+    $urls = fn (string $query) => collect($xpath->query($query))->map(fn (DOMAttr $attribute) => $attribute->value);
+    $icons = $urls('//link[@rel="icon" or @rel="apple-touch-icon"]/@href');
+    $images = $urls('//meta[@property="og:image" or @name="twitter:image"]/@content');
+
+    expect($icons)->toHaveCount(3)
+        ->and($images)->toHaveCount(2);
+
+    foreach ($icons->merge($images) as $url) {
+        $file = public_path(ltrim(parse_url($url, PHP_URL_PATH), '/'));
+
+        expect($file)->toBeFile()
+            ->and(filesize($file))->toBeGreaterThan(0);
+    }
 });
 
 it('ships every talk in the source archive', function () {
@@ -20,6 +84,11 @@ it('ships every talk in the source archive', function () {
         expect($talk)->toHaveKeys(['year', 'conference', 'title', 'speaker', 'summary', 'youtube_url']);
         expect($talk['youtube_url'])->toStartWith('https://');
     }
+
+    $pest = collect($talks)->firstWhere('youtube_url', 'https://www.youtube.com/watch?v=lEvau6CgqPE');
+
+    expect($pest['title'])->toBe('Introducing Pest')
+        ->and($pest['speaker'])->toBe('Nuno Maduro');
 });
 
 it('keeps the public copy of the archive in sync', function () {
