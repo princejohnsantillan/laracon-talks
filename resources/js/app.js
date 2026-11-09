@@ -1,4 +1,5 @@
 import Alpine from 'alpinejs';
+import { stemmer } from 'stemmer';
 
 window.Alpine = Alpine;
 
@@ -21,6 +22,9 @@ Alpine.data('archive', (total) => ({
     rows: [],
     tickRows: [],
     ledgerOpen: false,
+    yearFocus: null,
+    chipsBefore: false,
+    chipsAfter: false,
     conferenceCounts: {},
 
     init() {
@@ -28,10 +32,11 @@ Alpine.data('archive', (total) => ({
         // speaker and summary are all already on screen.
         this.rows = Array.from(this.$root.querySelectorAll('tbody tr')).map((el) => {
             const haystack = searchable(el.textContent).replace(/\s+/g, ' ');
+            const words = new Set(haystack.match(/[\p{L}\p{N}]+/gu));
             return {
                 el,
-                haystack,
-                words: new Set(haystack.match(/[\p{L}\p{N}]+/gu)),
+                words,
+                stemmed: [...words].map(stemmer).join(' '),
                 conference: el.dataset.conference,
                 year: el.dataset.year,
             };
@@ -51,6 +56,7 @@ Alpine.data('archive', (total) => ({
 
         measure();
         new ResizeObserver(measure).observe(controls);
+        new ResizeObserver(() => this.measureChips()).observe(this.$root.querySelector('.chips'));
 
         this.readUrl();
         this.apply(false);
@@ -69,6 +75,7 @@ Alpine.data('archive', (total) => ({
         this.conference = this.rows.some(row => row.conference === params.get('conference'))
             ? params.get('conference') : 'all';
         this.year = this.rows.some(row => row.year === params.get('year')) ? params.get('year') : null;
+        this.yearFocus = this.year;
     },
 
     get filtered() {
@@ -84,6 +91,22 @@ Alpine.data('archive', (total) => ({
         const strip = chip.parentElement;
         // Horizontal only: restoring filters must not move the page vertically.
         strip.scrollLeft = chip.offsetLeft - (strip.clientWidth - chip.offsetWidth) / 2;
+        this.measureChips();
+    },
+
+    measureChips() {
+        const strip = this.$root.querySelector('.chips');
+        this.chipsBefore = strip.scrollLeft > 1;
+        this.chipsAfter = strip.scrollLeft + strip.clientWidth < strip.scrollWidth - 1;
+    },
+
+    focusYear(event) {
+        const options = this.tickRows.map(row => row.el).filter(el => !el.disabled);
+        const current = options.indexOf(document.activeElement);
+        let index = current + (event.key === 'ArrowDown' ? 1 : -1);
+        if (event.key === 'Home') index = 0;
+        if (event.key === 'End') index = options.length - 1;
+        options[(index + options.length) % options.length]?.focus();
     },
 
     toggleYear(year) {
@@ -117,17 +140,17 @@ Alpine.data('archive', (total) => ({
     },
 
     apply(updateUrl = true) {
-        const terms = searchable(this.query).split(/\s+/).filter(Boolean);
+        const terms = searchable(this.query).split(/\s+/).filter(Boolean).map(raw => ({ raw, stem: stemmer(raw) }));
         const perYear = new Map();
         const perConference = { all: 0 };
         let shown = 0;
 
         for (const row of this.rows) {
-            const matchesQuery = terms.every((term) => {
+            const matchesQuery = terms.every(({ raw, stem }) => {
                 // Short topics such as AI must not match words like "maintain".
-                if (term.length <= 2) return row.words.has(term);
-                return row.haystack.includes(term) ||
-                    (term.endsWith('s') && !term.endsWith('ss') && row.words.has(term.slice(0, -1)));
+                if (raw.length <= 2) return row.words.has(raw);
+                // Compare English word forms symmetrically, retaining partial searches.
+                return row.stemmed.includes(stem);
             });
             const matchesConference = this.conference === 'all' || row.conference === this.conference;
             const matchesYear = this.year === null || row.year === this.year;
@@ -154,6 +177,9 @@ Alpine.data('archive', (total) => ({
             el.setAttribute('aria-label', `Filter by ${year} — ${lit} matching ${lit === 1 ? 'talk' : 'talks'}`);
             el.disabled = lit === 0 && this.year !== year;
             ticks.forEach((tick, index) => tick.classList.toggle('lit', index < lit));
+        }
+        if (!this.tickRows.some(row => row.year === this.yearFocus && !row.el.disabled)) {
+            this.yearFocus = this.tickRows.find(row => !row.el.disabled)?.year ?? null;
         }
 
         const url = new URL(location.href);

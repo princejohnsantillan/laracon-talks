@@ -377,6 +377,10 @@
     background: var(--brand-hot);
 }
 
+.ledger-rows:has([aria-pressed='true']) .ledger-row[aria-pressed='false'] .ledger-ticks i.lit {
+    opacity: 0.35;
+}
+
 .ledger-count {
     width: 1.75rem;
     flex: none;
@@ -402,6 +406,10 @@
     background: var(--line-soft);
 }
 
+.ledger-row:disabled .ledger-count {
+    text-decoration: line-through;
+}
+
 @media (max-width: 460px) {
     :root {
         --tick-w: 1px;
@@ -409,6 +417,11 @@
 
     .ledger-ticks {
         gap: 1px;
+    }
+
+    .hero-facts {
+        display: grid;
+        grid-template-columns: repeat(2, max-content);
     }
 }
 
@@ -527,6 +540,10 @@
     color: var(--ink);
 }
 
+.count-unit {
+    display: none;
+}
+
 .filter-row {
     display: flex;
     align-items: center;
@@ -604,6 +621,9 @@
 
 .chip-year {
     min-width: 44px;
+    padding-inline: 0.5rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
     color: var(--brand);
     font-family: var(--font-mono);
     font-size: 0.75rem;
@@ -641,6 +661,10 @@
 
     .count-of {
         display: none;
+    }
+
+    .count-unit {
+        display: inline;
     }
 }
 
@@ -896,6 +920,16 @@
         cursor: pointer;
     }
 
+    .disclosure-label {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+    }
+
+    .disclosure-label span {
+        font-size: 1.125rem;
+    }
+
     .ledger-row,
     .theme-toggle,
     .chip,
@@ -912,15 +946,34 @@
         scrollbar-width: thin;
     }
 
+    .chip-strip::before,
     .chip-strip::after {
         content: '';
         position: absolute;
-        inset: 0 0 0 auto;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
         width: 1.25rem;
-        background: linear-gradient(to right, transparent, var(--paper));
+        opacity: 0;
         pointer-events: none;
     }
 
+    .chip-strip::before {
+        left: 0;
+        background: linear-gradient(to right, var(--paper), transparent);
+    }
+
+    .chip-strip::after {
+        right: 0;
+        background: linear-gradient(to right, transparent, var(--paper));
+    }
+
+    .chip-strip.has-before::before,
+    .chip-strip.has-after::after {
+        opacity: 1;
+    }
+
+    .chip-strip:focus-within::before,
     .chip-strip:focus-within::after {
         display: none;
     }
@@ -950,6 +1003,11 @@
 }
 
 @media (min-width: 600px) and (max-width: 1023px) {
+    .archive-table tbody {
+        max-width: 42rem;
+        margin-inline: auto;
+    }
+
     .archive-table tbody tr {
         padding-inline: 1rem;
     }

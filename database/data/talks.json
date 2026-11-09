@@ -3500,7 +3500,7 @@
     "conference": "Laracon US",
     "title": "Laravel Cloud, Inertia 2.0, VS Code Extension, & OSS Updates",
     "speaker": "Taylor Otwell",
-    "summary": "The founder of Laravel, Taylor Otwell, announced framework updates and 3 major releases at Laracon US 2024 in Dallas, TX. Laravel Cloud, Intertia 2.0, VS Code Extension, & OSS Updates - Taylor Otwell Keynote at Laracon US 2024 Timeline: 00:00 Welcome 01:15 The State of Laravel 06:00 Herd Forge Integration 06:30 New vscode Extension (with Joe Tannenbaum) 18:18 Temp URLs Locally 22:20 Container Attributes 26:50 Eloquent Chaperone 31:37 Defer Tasks 37:50 Flexible Cache 41:10 Concurrency 49:45 Inertia Async…",
+    "summary": "Taylor Otwell presents Laravel framework updates, Laravel Cloud, Inertia 2.0, and the VS Code extension, alongside updates to Herd, Forge, Eloquent, caching, and concurrency.",
     "youtube_url": "https://www.youtube.com/watch?v=AwWepVU5uWM"
   },
   {
@@ -4068,7 +4068,7 @@
     "conference": "Laracon US",
     "title": "Laracon Keynote 2025",
     "speaker": "Taylor Otwell and the Laravel team",
-    "summary": "Watch the Laravel Keynote from Laracon 2025 featuring major updates: Laravel Boost, Forge with instant VPS provisioning and zero-downtime deployments, Cloud preview environments, Nightwatch updates, new Cloud plans, and many other announcements. Key Timestamps & Major Announcements: 0:00 - Introduction & 2025 Overview 3:17 - Open Source Framework Updates 19:38 - JavaScript/Frontend Improvements 26:15 - Laravel Wayfinder 41:59 - Laravel Boost 1:14:09 - Nightwatch Light Mode 1:18:48 - Laravel Forge Updates…",
+    "summary": "Taylor Otwell and the Laravel team introduce Laravel Boost, Forge instant VPS provisioning and zero-downtime deployments, Cloud preview environments and plans, and Nightwatch updates.",
     "youtube_url": "https://www.youtube.com/watch?v=CJv5Y7im3Ws"
   },
   {
@@ -4100,7 +4100,7 @@
     "conference": "Laracon US",
     "title": "Prism & AI",
     "speaker": "TJ Miller",
-    "summary": "TJ Miller presents Prism, a unified routing layer for AI models that simplifies switching between providers like OpenAI and Anthropic with just one line of code, offering Laravel-like elegance while maintaining provider-specific features. 0:00 Introduction to TJ Miller and Prism 1:48 What is Prism - One API for multiple AI providers 4:02 Text Generation and Streaming Capabilities 5:56 Structured Output with Prism 9:12 Building AI Tools and Agents 13:01 Image Generation Workflow 16:23 Testing Prism and…",
+    "summary": "TJ Miller introduces Prism, a unified API for switching between AI providers such as OpenAI and Anthropic. The talk covers text generation, streaming, structured output, tools and agents, image generation, and testing.",
     "youtube_url": "https://www.youtube.com/watch?v=TsEeIjWrPhI"
   },
   {
@@ -4628,7 +4628,7 @@
     "conference": "Laracon US",
     "title": "Everything New with Laravel and Cloud",
     "speaker": "Taylor Otwell",
-    "summary": "Laravel framework installs are past 350,000 a day, and the number of new Laravel apps created by coding agents is doubling roughly every five weeks. Shipping on the open source side: conditional container bindings through attributes, debounced jobs, a php artisan dev command that packages can register into, refreshable locks, first-party image manipulation, CPX 2.0, Pint for Blade, the new Laravel Head package, Str::summarize(), Inertia Chrome DevTools, an OpenAI-compatible AI SDK provider that unlocks local…",
+    "summary": "Taylor Otwell presents Laravel and Cloud updates, including conditional container bindings, debounced jobs, refreshable locks, image manipulation, Pint for Blade, Laravel Head, Inertia Chrome DevTools, and an OpenAI-compatible AI SDK provider.",
     "youtube_url": "https://www.youtube.com/watch?v=92Xn3NqPGlw"
   },
   {
@@ -4636,7 +4636,7 @@
     "conference": "Laracon US",
     "title": "Filament: Advanced Practical Examples",
     "speaker": "Povilas Korop",
-    "summary": "Filament isn't just an admin panel builder, it's an app builder, and thirteen real demos make the case.Attendance grids of checkboxes, colorful availability tables, GitHub-style contribution heat maps, tables rendered as grids instead of rows Roughly a hundred render hooks let you move the search bar to the other side or drop a user avatar above the sidebar, and a fully custom theme is possible if you're willing to write a lot of CSS to get there. Repeaters handle parent/child forms, while sections, tabs, and…",
+    "summary": "A tour of Filament's app-building capabilities through thirteen demos, including attendance grids, availability tables, contribution heat maps, grid-based tables, render hooks, custom themes, repeaters, and parent/child forms.",
     "youtube_url": "https://www.youtube.com/watch?v=olvqO33PBI0"
   },
   {
@@ -4660,7 +4660,7 @@
     "conference": "Laracon US",
     "title": "Introducing Pest 5",
     "speaker": "Nuno Maduro",
-    "summary": "Nuno Maduro unveils Pest 5 with live demos of six new features: an agent plugin that lets Claude Code arrange a scenario, drive a browser, and make backend assertions in a single tool call; a PHPStan plugin for fully type-safe tests; a Rector plugin that rewrites AI-generated tests into idiomatic Pest; an evals plugin for testing AI agents against reference answers; time-based CI sharding so every shard finishes together; and the TIA engine, which cuts Laravel Cloud's local suite from 200 seconds to 5. Pest 5…",
+    "summary": "Nuno Maduro introduces six Pest 5 testing features: plugins for agents, PHPStan, Rector, and AI evaluations, plus time-based CI sharding and the TIA engine.",
     "youtube_url": "https://www.youtube.com/watch?v=71bMyZcDlM4"
   },
   {
@@ -4684,7 +4684,7 @@
     "conference": "Laracon US",
     "title": "Proven Package Patterns",
     "speaker": "Freek Van der Herten",
-    "summary": "In the age of AI, packages still earn their place for hard problems, external problems, and tasteful solutions, but maybe not for the trivial shared ones an agent can write inline for your project. Keeping a package flexible without drowning in configuration comes down to a handful of patterns: fire events so users can hook in wherever they want instead of adding an option for every hook, let people register their own models and jobs by extending yours, and wrap low-level behavior in action classes they can…",
+    "summary": "Freek Van der Herten discusses why packages still matter in the age of AI, and how to keep them flexible without a growing list of options. Patterns include exposing events, extensible models and jobs, and action classes.",
     "youtube_url": "https://www.youtube.com/watch?v=uZU1F_BWiXU"
   },
   {

@@ -67,7 +67,7 @@
                 <p class="hero-lede">
                     <span class="hero-history">Since the inaugural Laracon in Washington, DC in 2013, this community has documented
                     itself out loud — on stage and on video. </span>Here are all <strong>{{ $total }}</strong> recorded talks, from Laracon US, EU,
-                    Online, AU and India. Search it the way you'd search a codebase.
+                    Online, AU and India. Try a speaker’s surname, Livewire, or a year.
                 </p>
 
                 <p class="hero-facts">
@@ -82,8 +82,8 @@
             <div class="ledger">
                 <button type="button" class="ledger-toggle" @click="ledgerOpen = !ledgerOpen"
                         :aria-expanded="ledgerOpen" aria-expanded="false" aria-controls="year-options">
-                    Browse by year <span x-text="year ?? '2013–2026'"></span>
-                    <span aria-hidden="true" x-text="ledgerOpen ? '−' : '+'">+</span>
+                    <span class="disclosure-label">Browse by year <span aria-hidden="true" x-text="ledgerOpen ? '−' : '+'">+</span></span>
+                    <span x-text="year ?? '2013–2026'"></span>
                 </button>
                 <div id="year-options" class="ledger-content mobile-collapsed" :class="{ 'mobile-collapsed': !ledgerOpen }">
                 <div class="ledger-head">
@@ -91,13 +91,18 @@
                     <p class="eyebrow">Pick a year to filter</p>
                 </div>
                 <p class="ledger-help">Matching search and conference, before choosing a year.</p>
+                <p id="year-keys" class="sr-only">Use Up and Down arrows to move between years, Home and End for the first and last. Press Enter to select.</p>
 
-                <div class="ledger-rows">
+                <div class="ledger-rows" role="toolbar" aria-label="Filter by year" aria-orientation="vertical" aria-describedby="year-keys"
+                     @keydown.up.prevent="focusYear($event)" @keydown.down.prevent="focusYear($event)"
+                     @keydown.home.prevent="focusYear($event)" @keydown.end.prevent="focusYear($event)">
                     @foreach ($years as $y)
                         <button type="button"
                                 class="ledger-row"
                                 data-tick-year="{{ $y['year'] }}"
                                 @click="toggleYear('{{ $y['year'] }}')"
+                                @focus="yearFocus = '{{ $y['year'] }}'"
+                                :tabindex="yearFocus === '{{ $y['year'] }}' ? 0 : -1" tabindex="{{ $loop->first ? 0 : -1 }}"
                                 :aria-pressed="year === '{{ $y['year'] }}' ? 'true' : 'false'"
                                 aria-pressed="false"
                                 aria-label="Show only {{ $y['year'] }} — {{ $y['count'] }} talks">
@@ -132,14 +137,14 @@
                     </div>
                     <kbd class="search-hint">/</kbd>
                     <p class="result-count" role="status" aria-live="polite">
-                        <b x-text="shown">{{ $total }}</b><span class="count-of"> of {{ $total }}</span>
-                        <span x-text="shown === 1 ? ' talk' : ' talks'"> talks</span>
+                        <b x-text="shown">{{ $total }}</b><span class="count-of"> of {{ $total }} talks</span>
+                        <span class="count-unit" x-text="shown === 1 ? ' talk' : ' talks'"> talks</span>
                     </p>
                 </div>
 
                 <div class="filter-row">
-                    <div class="chip-strip">
-                        <div class="chips" role="group" aria-label="Conference filters" @focusin="revealChip($event.target.closest('.chip'))">
+                    <div class="chip-strip" :class="{ 'has-before': chipsBefore, 'has-after': chipsAfter }">
+                        <div class="chips" role="group" aria-label="Conference filters" @focusin="if ($event.target.matches(':focus-visible')) revealChip($event.target.closest('.chip'))" @scroll.passive="measureChips()">
                             <button type="button" class="chip" @click="conference = 'all'"
                                     :aria-pressed="conference === 'all' ? 'true' : 'false'" aria-pressed="true">
                                 All <span x-text="conferenceCounts.all ?? {{ $total }}">{{ $total }}</span>
@@ -158,8 +163,8 @@
                     <div class="active-filters" x-show="filtered" x-cloak>
                         <button type="button" class="chip-year" x-show="year !== null" @click="year = null"
                                 :aria-label="'Remove year filter ' + year"><span x-text="year"></span> ×</button>
-                        <button type="button" class="chip-clear" x-show="filtered" x-cloak @click="clear()" aria-label="Clear all filters">
-                            <span class="clear-long">Clear all filters</span><span class="clear-short">Reset</span>
+                        <button type="button" class="chip-clear" x-show="filtered" x-cloak @click="clear()" aria-label="Reset all filters">
+                            <span class="clear-long">Reset all filters</span><span class="clear-short">Reset</span>
                         </button>
                     </div>
                 </div>
@@ -209,9 +214,9 @@
 
         <div class="empty" x-show="shown === 0" x-cloak>
             <h2 x-text="query !== '' ? 'No talks match “' + query + '”.' : 'No talks match these filters.'">No talks match these filters.</h2>
-            <p x-show="query !== ''">No matches for “<span x-text="query"></span>”. Try a speaker’s surname or a topic such as Eloquent.</p>
+            <p x-show="query !== ''">Try a speaker’s surname or a topic such as Eloquent.</p>
             <p x-show="query === ''">This conference and year have no recorded talks together. Choose another year or conference.</p>
-            <button type="button" @click="clear()">Clear all filters</button>
+            <button type="button" @click="clear()">Reset all filters</button>
         </div>
     </div>
     </main>
